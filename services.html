@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Repair Services & Pricing - AppleSeed Repairs</title>
+    <meta property="og:title" content="Professional Device Repair Services">
+    <meta property="og:description" content="Expert repairs for your smartphones, tablets, and laptops">
+    <meta property="og:image" content="/images/Facebook_Cover_Art-2.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Color Scheme - Matching Homepage */
+            --primary-dark: #1a1a1a;
+            --primary-light: #ffffff;
+            --accent-orange: #FFA500;
+            --accent-green: #90EE90;
+            --accent-blue: #00a9ff;
+            --accent-hover-orange: #FF8C00;
+            --accent-hover-green: #32CD32;
+            --accent-hover-blue: #0088cc;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            
+            /* Animations */
+            --transition-speed: 0.3s;
+            --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        /* Enhanced Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #2a2a2a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Hero Section */
+        .services-hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(45deg, 
+                rgba(0, 169, 255, 0.1), 
+                rgba(144, 238, 144, 0.1), 
+                rgba(255, 165, 0, 0.1));
+            overflow: hidden;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, 
+                transparent 0%, 
+                var(--primary-dark) 70%);
+            z-index: 1;
+        }
+
+        .services-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(
+                45deg,
+                var(--accent-blue),
+                var(--accent-green),
+                var(--accent-orange)
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientText 8s ease infinite;
+        }
+
+        /* New Floating Icons Animation */
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced Service Cards */
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-sm);
+            transition: all var(--transition-speed) var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+        }
+
+        /* New Price Tag Component */
+        .price-tag {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--accent-blue);
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Enhanced Filter Buttons */
+        .filter-button {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all var(--transition-speed) var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .filter-button:hover::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        .filter-button.active {
+            background: var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        /* New Loading Animation */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--glass-border);
+            border-top: 4px solid var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* New Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        /* Responsive Design Improvements */
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .service-card {
+                margin: var(--spacing-sm) 0;
+            }
+
+            .filter-button {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Matching HOMEPAGE.html styles */
+        .service-categories {
+            padding: var(--spacing-lg);
+            background-color: var(--primary-dark);
+        }
+
+        .category-filters {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-button {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--accent-blue);
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background-color: var(--accent-blue);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: var(--spacing-md);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .device-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .device-tag {
+            background: var(--accent-orange);
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .repair-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .repair-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .repair-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .repair-price {
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        .repair-time {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .book-repair-btn {
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background: var(--accent-blue);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .book-repair-btn:hover {
+            background: var(--accent-hover-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Price Check Section */
+        .price-check {
+            padding: var(--spacing-lg);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .device-selector {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: var(--spacing-md) auto;
+            flex-wrap: wrap;
+            max-width: 800px;
+        }
+
+        .device-selector select {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            background: var(--primary-dark);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            font-size: 1rem;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem top 50%;
+            background-size: 0.65rem auto;
+        }
+
+        .device-selector select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .price-display {
+            font-size: 1.5rem;
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: inline-block;
+            min-width: 300px;
+        }
+
+        .price-display .price-amount {
+            color: var(--accent-green);
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            .device-selector select {
+                width: 100%;
+                max-width: none;
+            }
+            
+            .price-display {
+                width: 90%;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Trust Indicators */
+        .trust-indicators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: var(--spacing-md);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .trust-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .trust-item i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .trust-item h3 {
+            margin-bottom: var(--spacing-xs);
+            color: var(--accent-green);
+        }
+
+        .trust-item p {
+            color: var(--text-secondary);
+        }
+
+        /* Add these styles to your existing <style> section */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo .orange { color: var(--accent-orange); }
+        .logo .green { color: var(--accent-green); }
+        .logo .blue { color: var(--accent-blue); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .cta-button {
+            background: var(--accent-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-hover-blue);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 26, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                border-bottom: 1px solid var(--glass-border);
+            }
+        }
+
+        /* Adjust hero section to account for fixed navbar */
+        .services-hero {
+            margin-top: 70px; /* Height of navbar */
+        }
+
+        /* Remove the common-repairs section and update the filter buttons */
+        .device-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        .device-filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border: 1px solid transparent;
+        }
+
+        .device-filter-btn.active {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .device-filter-btn:hover {
+            transform: translateY(-2px);
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        /* Service Grid Layout */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Footer Styles */
+        .footer-section {
+            background: rgba(255, 255, 255, 0.02);
+            padding: var(--spacing-lg) 0;
+            margin-top: var(--spacing-lg);
+        }
+
+        .trust-indicators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: var(--spacing-md);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .trust-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .trust-item i {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .trust-item h3 {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .trust-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            padding: var(--spacing-md) 0;
+            margin-top: var(--spacing-md);
+            border-top: 1px solid var(--glass-border);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .trust-indicators {
+                grid-template-columns: 1fr;
+                padding: 0 var(--spacing-sm);
+            }
+            
+            .trust-item {
+                padding: var(--spacing-sm);
+            }
+        }
+
+        /* Mail-in Service Section */
+        .mail-in-service {
+            text-align: center;
+            padding: var(--spacing-lg) var(--spacing-md);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mail-in-service h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .mail-in-description {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-md);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .step h3 {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .mail-in-service h2 {
+                font-size: 2rem;
+            }
+            
+            .mail-in-description {
+                font-size: 1rem;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <!-- Additional Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Add this right after your opening <body> tag, before the services-hero section -->
+    <header class="nav-container">
+        <nav class="navbar">
+            <a href="/" class="logo">
+                <span class="orange">Apple</span><span class="green">Seed</span> <span class="blue">Repairs</span>
+            </a>
+            <div class="nav-links">
+                <a href="https://sites.google.com/view/appleseed-repairs-services/">
+                    <i class="fas fa-tools"></i> Services
+                </a>
+                <a href="https://www.kaywat.me/">
+                    <i class="fas fa-info-circle"></i> About
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepairs-contact/home">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+                <a href="https://blog.fixmyapple.org/" target="_blank">
+                    <i class="fas fa-blog"></i> Blog
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepair-mail-in">
+                    <i class="fas fa-shipping-fast"></i> Send-in Repair
+                </a>
+            </div>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Add this right after your opening <body> tag -->
+    <section class="services-hero">
+        <div class="floating-icons">
+            <!-- Icons will be dynamically added via JavaScript -->
+        </div>
+        <h1>Professional Device Repair</h1>
+        <p>Expert repairs for iPhone, Samsung, Google Pixel and more</p>
+    </section>
+
+    <!-- Add the new price check section right after the hero -->
+    <section class="price-check">
+        <h2>Find Your Repair Price</h2>
+        <div class="device-selector">
+            <select id="deviceBrand">
+                <option value="">Select Brand</option>
+                <option value="iphone">iPhone</option>
+                <option value="samsung">Samsung</option>
+                <option value="pixel">Google Pixel</option>
+            </select>
+            <select id="deviceModel" disabled>
+                <option value="">Select Model</option>
+            </select>
+            <select id="repairType" disabled>
+                <option value="">Select Repair</option>
+                <option value="screen">Screen Repair</option>
+                <option value="battery">Battery Replacement</option>
+                <option value="backGlass">Back Glass Repair</option>
+                <option value="camera">Camera Repair</option>
+                <option value="charging">Charging Port Repair</option>
+                <option value="software">Software Repair</option>
+            </select>
+        </div>
+        <div class="price-display">
+            <span class="price-label">Estimated Price:</span>
+            <span class="price-amount">Select options above</span>
+        </div>
+    </section>
+    <!-- Existing Service Categories Section with improvements -->
+        <div class="service-grid">
+            <!-- Google Pixel Cards -->
+            <div class="service-card" data-device="pixel">
+                <div class="device-header">
+                    <h3>Pixel 8 Pro</h3>
+                    <span class="device-tag">Latest Model</span>
+                </div>
+                <div class="repair-options">
+                    <div class="repair-item">
+                        <i class="fas fa-mobile-screen"></i>
+                        <span class="repair-name">Screen Repair</span>
+                        <span class="repair-price">$309.99</span>
+                        <span class="repair-time">~2 Hours</span>
+                    </div>
+                    <div class="repair-item">
+                        <i class="fas fa-battery-full"></i>
+                        <span class="repair-name">Battery Replacement</span>
+                        <span class="repair-price">$179.99</span>
+                        <span class="repair-time">~1 Hour</span>
+                    </div>
+                    <div class="repair-item">
+                        <i class="fas fa-camera"></i>
+                        <span class="repair-name">Rear Camera</span>
+                        <span class="repair-price">$299.99</span>
+                        <span class="repair-time">~1 Hour</span>
+                    </div>
+                    <div class="repair-item">
+                        <i class="fas fa-plug"></i>
+                        <span class="repair-name">Charging Port</span>
+                        <span class="repair-price">$599.99</span>
+                        <span class="repair-time">~1 Hour</span>
+                    </div>
+                </div>
+                <button class="book-repair-btn">Book Repair</button>
+            </div>
+
+            <!-- Samsung Cards -->
+            <div class="service-card" data-device="samsung">
+                <div class="device-header">
+                    <h3>Galaxy S24 Ultra</h3>
+                    <span class="device-tag">Latest Model</span>
+                </div>
+                <div class="repair-options">
+                    <div class="repair-item">
+                        <i class="fas fa-mobile-screen"></i>
+                        <span class="repair-name">Screen Repair</span>
+                        <span class="repair-price">$259.00</span>
+                        <span class="repair-time">~2 Hours</span>
+                    </div>
+                    <div class="repair-item">
+                        <i class="fas fa-battery-full"></i>
+                        <span class="repair-name">Battery Replacement</span>
+                        <span class="repair-price">$79.00</span>
+                        <span class="repair-time">~1 Hour</span>
+                    </div>
+                    <!-- Add more repair options -->
+                </div>
+                <button class="book-repair-btn">Book Repair</button>
+            </div>
+
+            <!-- Add more device cards -->
+            <div class="service-card" data-device="iphone">
+                <div class="device-header">
+                    <h3>iPhone 15 Pro Max</h3>
+                    <span class="device-tag">Latest Model</span>
+                </div>
+                <div class="repair-options">
+                    <div class="repair-item">
+                        <i class="fas fa-mobile-screen"></i>
+                        <span class="repair-name">Screen Repair</span>
+                        <span class="repair-price">$449.99</span>
+                        <span class="repair-time">1 Hour</span>
+                    </div>
+                    <div class="repair-item">
+                        <i class="fas fa-battery-full"></i>
+                        <span class="repair-name">Battery Replacement</span>
+                        <span class="repair-price">$129.99</span>
+                        <span class="repair-time">Same Day</span>
+                    </div>
+                    <div class="repair-item">
+                        <i class="fas fa-mobile"></i>
+                        <span class="repair-name">Back Glass</span>
+                        <span class="repair-price">$169.99</span>
+                        <span class="repair-time">1 Hour</span>
+                    </div>
+                </div>
+                <button class="book-repair-btn">Book Repair</button>
+            </div>
+        </div>
+    </section>
+            <!-- Add more benefits -->
+        </div>
+    </section>
+
+    <!-- Mail-In Service Process -->
+    <section class="mail-in-service">
+        <h2>Can't Visit Us? Mail Your Device</h2>
+        <p class="mail-in-description">Fast, secure, and convenient mail-in repair service. Free shipping both ways!</p>
+        <div class="process-steps">
+            <div class="step">
+                <i class="fas fa-box-open"></i>
+                <h3>Pack & Ship</h3>
+                <p>Securely package your device and ship it to us using our prepaid shipping label</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-tools"></i>
+                <h3>Expert Repair</h3>
+                <p>Our certified technicians will diagnose and repair your device within 24-48 hours</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Quick Return</h3>
+                <p>We'll ship your repaired device back to you with priority shipping</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize GSAP
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Add floating icons
+            const icons = ['📱', '', '🔧', '⚡', '🛠️'];
+            const floatingIcons = document.querySelector('.floating-icons');
+            
+            for (let i = 0; i < 15; i++) {
+                const icon = document.createElement('div');
+                icon.className = 'floating-icon';
+                icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+                icon.style.left = `${Math.random() * 100}%`;
+                icon.style.animationDelay = `${Math.random() * 20}s`;
+                floatingIcons.appendChild(icon);
+            }
+
+            // Enhanced filter functionality
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const serviceCards = document.querySelectorAll('.service-card');
+            const loadingSpinner = document.querySelector('.loading-spinner');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Show loading spinner
+                    loadingSpinner.style.display = 'block';
+
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+
+                    const filter = button.dataset.filter;
+
+                    // Simulate loading delay
+                    setTimeout(() => {
+                        serviceCards.forEach(card => {
+                            if (filter === 'all' || card.dataset.device === filter) {
+                                gsap.to(card, {
+                                    duration: 0.5,
+                                    opacity: 1,
+                                    y: 0,
+                                    scale: 1,
+                                    ease: "back.out(1.7)"
+                                });
+                            } else {
+                                gsap.to(card, {
+                                    duration: 0.5,
+                                    opacity: 0,
+                                    y: 20,
+                                    scale: 0.9,
+                                    ease: "back.in(1.7)"
+                                });
+                            }
+                        });
+
+                        // Hide loading spinner
+                        loadingSpinner.style.display = 'none';
+
+                        // Show toast notification
+                        showToast(`Showing ${filter === 'all' ? 'all' : filter} devices`);
+                    }, 500);
+                });
+            });
+
+            // Toast notification function
+            function showToast(message) {
+                const toast = document.getElementById('toast');
+                const toastMessage = toast.querySelector('.toast-message');
+                toastMessage.textContent = message;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+
+            // GSAP Animations
+            gsap.from(".services-hero h1", {
+                duration: 1,
+                y: 100,
+                opacity: 0,
+                ease: "power4.out"
+            });
+
+            gsap.from(".filter-button", {
+                duration: 0.5,
+                opacity: 0,
+                y: 20,
+                stagger: 0.1,
+                ease: "back.out(1.7)"
+            });
+
+            // Scroll animations for service cards
+            gsap.utils.toArray(".service-card").forEach(card => {
+                gsap.from(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top bottom-=100",
+                        toggleActions: "play none none reverse"
+                    },
+                    duration: 0.8,
+                    opacity: 0,
+                    y: 50,
+                    ease: "power4.out"
+                });
+            });
+        });
+    </script>
+
+    <!-- Add this script before your existing closing </body> tag -->
+    <script>
+    // Device pricing data and selection logic
+    const devicePrices = {
+        iphone: {
+            // iPhone 15 Series
+            "15promax": {
+                screen: { price: "449.99", note: "1-Hour Repair" },
+                battery: { price: "129.99", note: "Same-Day Service" },
+                backGlass: { price: "169.99", note: "1-Hour Repair" },
+                camera: { price: "199.99", note: "Same-Day Service" },
+                charging: { price: "129.99", note: "1-Hour Repair" }
+            },
+            "15pro": {
+                screen: { price: "429.99", note: "1-Hour Repair" },
+                battery: { price: "129.99", note: "Same-Day Service" },
+                backGlass: { price: "169.99", note: "1-Hour Repair" },
+                camera: { price: "199.99", note: "Same-Day Service" },
+                charging: { price: "129.99", note: "1-Hour Repair" }
+            },
+            "15plus": {
+                screen: { price: "329.99", note: "1-Hour Repair" },
+                battery: { price: "129.99", note: "Same-Day Service" },
+                backGlass: { price: "149.99", note: "1-Hour Repair" },
+                camera: { price: "179.99", note: "Same-Day Service" },
+                charging: { price: "129.99", note: "1-Hour Repair" }
+            },
+            "15": {
+                screen: { price: "319.99", note: "1-Hour Repair" },
+                battery: { price: "129.99", note: "Same-Day Service" },
+                backGlass: { price: "149.99", note: "1-Hour Repair" },
+                camera: { price: "179.99", note: "Same-Day Service" },
+                charging: { price: "129.99", note: "1-Hour Repair" }
+            },
+            // iPhone 14 Series
+            "14promax": {
+                screen: { price: "429.99", note: "1-Hour Repair" },
+                battery: { price: "119.99", note: "Same-Day Service" },
+                backGlass: { price: "159.99", note: "1-Hour Repair" },
+                camera: { price: "189.99", note: "Same-Day Service" },
+                charging: { price: "119.99", note: "1-Hour Repair" }
+            },
+            "14pro": {
+                screen: { price: "399.99", note: "1-Hour Repair" },
+                battery: { price: "119.99", note: "Same-Day Service" },
+                backGlass: { price: "159.99", note: "1-Hour Repair" },
+                camera: { price: "189.99", note: "Same-Day Service" },
+                charging: { price: "119.99", note: "1-Hour Repair" }
+            },
+            "14plus": {
+                screen: { price: "309.99", note: "1-Hour Repair" },
+                battery: { price: "119.99", note: "Same-Day Service" },
+                backGlass: { price: "139.99", note: "1-Hour Repair" },
+                camera: { price: "169.99", note: "Same-Day Service" },
+                charging: { price: "119.99", note: "1-Hour Repair" }
+            },
+            "14": {
+                screen: { price: "299.99", note: "1-Hour Repair" },
+                battery: { price: "119.99", note: "Same-Day Service" },
+                backGlass: { price: "139.99", note: "1-Hour Repair" },
+                camera: { price: "169.99", note: "Same-Day Service" },
+                charging: { price: "119.99", note: "1-Hour Repair" }
+            },
+            // iPhone 13 Series
+            "13promax": {
+                screen: { price: "399.99", note: "1-Hour Repair" },
+                battery: { price: "109.99", note: "Same-Day Service" },
+                backGlass: { price: "149.99", note: "1-Hour Repair" },
+                camera: { price: "179.99", note: "Same-Day Service" },
+                charging: { price: "109.99", note: "1-Hour Repair" }
+            },
+            "13pro": {
+                screen: { price: "379.99", note: "1-Hour Repair" },
+                battery: { price: "109.99", note: "Same-Day Service" },
+                backGlass: { price: "149.99", note: "1-Hour Repair" },
+                camera: { price: "179.99", note: "Same-Day Service" },
+                charging: { price: "109.99", note: "1-Hour Repair" }
+            },
+            "13": {
+                screen: { price: "279.99", note: "1-Hour Repair" },
+                battery: { price: "109.99", note: "Same-Day Service" },
+                backGlass: { price: "129.99", note: "1-Hour Repair" },
+                camera: { price: "159.99", note: "Same-Day Service" },
+                charging: { price: "109.99", note: "1-Hour Repair" }
+            },
+            "13mini": {
+                screen: { price: "259.99", note: "1-Hour Repair" },
+                battery: { price: "109.99", note: "Same-Day Service" },
+                backGlass: { price: "129.99", note: "1-Hour Repair" },
+                camera: { price: "159.99", note: "Same-Day Service" },
+                charging: { price: "109.99", note: "1-Hour Repair" }
+            },
+            // iPhone 12 Series
+            "12promax": {
+                screen: { price: "379.99", note: "1-Hour Repair" },
+                battery: { price: "99.99", note: "Same-Day Service" },
+                backGlass: { price: "139.99", note: "1-Hour Repair" },
+                camera: { price: "169.99", note: "Same-Day Service" },
+                charging: { price: "99.99", note: "1-Hour Repair" }
+            },
+            "12pro": {
+                screen: { price: "359.99", note: "1-Hour Repair" },
+                battery: { price: "99.99", note: "Same-Day Service" },
+                backGlass: { price: "139.99", note: "1-Hour Repair" },
+                camera: { price: "169.99", note: "Same-Day Service" },
+                charging: { price: "99.99", note: "1-Hour Repair" }
+            },
+            "12": {
+                screen: { price: "259.99", note: "1-Hour Repair" },
+                battery: { price: "99.99", note: "Same-Day Service" },
+                backGlass: { price: "119.99", note: "1-Hour Repair" },
+                camera: { price: "149.99", note: "Same-Day Service" },
+                charging: { price: "99.99", note: "1-Hour Repair" }
+            },
+            "12mini": {
+                screen: { price: "239.99", note: "1-Hour Repair" },
+                battery: { price: "99.99", note: "Same-Day Service" },
+                backGlass: { price: "119.99", note: "1-Hour Repair" },
+                camera: { price: "149.99", note: "Same-Day Service" },
+                charging: { price: "99.99", note: "1-Hour Repair" }
+            },
+            // iPhone 11 Series
+            "11promax": {
+                screen: { price: "329.99", note: "1-Hour Repair" },
+                battery: { price: "89.99", note: "Same-Day Service" },
+                backGlass: { price: "129.99", note: "1-Hour Repair" },
+                camera: { price: "159.99", note: "Same-Day Service" },
+                charging: { price: "89.99", note: "1-Hour Repair" }
+            },
+            "11pro": {
+                screen: { price: "309.99", note: "1-Hour Repair" },
+                battery: { price: "89.99", note: "Same-Day Service" },
+                backGlass: { price: "129.99", note: "1-Hour Repair" },
+                camera: { price: "159.99", note: "Same-Day Service" },
+                charging: { price: "89.99", note: "1-Hour Repair" }
+            },
+            "11": {
+                screen: { price: "199.99", note: "1-Hour Repair" },
+                battery: { price: "89.99", note: "Same-Day Service" },
+                backGlass: { price: "109.99", note: "1-Hour Repair" },
+                camera: { price: "139.99", note: "Same-Day Service" },
+                charging: { price: "89.99", note: "1-Hour Repair" }
+            }
+        },
+        samsung: {
+            // Keep existing Samsung models
+            s24ultra: {
+                screen: { price: "359.99", note: "2-Hour Repair" },
+                battery: { price: "129.99", note: "Same-Day Service" },
+                backGlass: { price: "159.99", note: "1-Hour Repair" }
+            }
+        },
+        pixel: {
+            // Keep existing Pixel models
+            pixel8pro: {
+                screen: { price: "349.99", note: "2-Hour Repair" },
+                battery: { price: "129.99", note: "Same-Day Service" },
+                backGlass: { price: "149.99", note: "1-Hour Repair" }
+            }
+        }
+    };
+
+    // Update device models based on brand selection
+    document.getElementById('deviceBrand').addEventListener('change', function() {
+        const modelSelect = document.getElementById('deviceModel');
+        const brand = this.value;
+        
+        modelSelect.innerHTML = '<option value="">Select Model</option>';
+        modelSelect.disabled = !brand;
+        
+        if (brand && devicePrices[brand]) {
+            Object.keys(devicePrices[brand]).forEach(model => {
+                const option = document.createElement('option');
+                option.value = model;
+                option.textContent = model.toUpperCase().replace(/(\d+)/, ' $1 ');
+                modelSelect.appendChild(option);
+            });
+        }
+    });
+
+    // Enable repair type selection after model is chosen
+    document.getElementById('deviceModel').addEventListener('change', function() {
+        document.getElementById('repairType').disabled = !this.value;
+        updatePrice();
+    });
+
+    // Update price display
+    document.getElementById('repairType').addEventListener('change', updatePrice);
+
+    function updatePrice() {
+        const brand = document.getElementById('deviceBrand').value;
+        const model = document.getElementById('deviceModel').value;
+        const repair = document.getElementById('repairType').value;
+        const priceDisplay = document.querySelector('.price-amount');
+        
+        if (brand && model && repair && devicePrices[brand]?.[model]?.[repair]) {
+            const repairInfo = devicePrices[brand][model][repair];
+            priceDisplay.textContent = `$${repairInfo.price} (${repairInfo.note})`;
+        } else {
+            priceDisplay.textContent = 'Select options above';
+        }
+    }
+    </script>
+
+    <!-- Trust Indicators / Why Choose Us Footer -->
+    <footer class="footer-section">
+        <div class="trust-indicators">
+            <div class="trust-item">
+                <i class="fas fa-tools"></i>
+                <h3>Expert Technicians</h3>
+                <p>Certified professionals with years of experience in device repair</p>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-clock"></i>
+                <h3>Quick Service</h3>
+                <p>Most repairs completed within 1-2 hours</p>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Warranty Included</h3>
+                <p>90-day warranty on all parts and labor</p>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Competitive Pricing</h3>
+                <p>Best price guarantee with high-quality parts</p>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 AppleSeed Repairs. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html> 

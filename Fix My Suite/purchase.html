@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixMySystem - Premium Subscriptions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-size: 1.6rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .navbar-brand i {
+            margin-right: 10px;
+        }
+        
+        .brand-fix {
+            color: #FF6B00; /* Orange */
+        }
+        
+        .brand-my {
+            color: #00B894; /* Green */
+        }
+        
+        .brand-platform {
+            color: #3498db; /* Blue */
+        }
+        
+        .navbar .btn {
+            background: #222;
+            border: 1px solid #444;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 4px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .navbar .btn:hover {
+            background: #FF6B00;
+            border-color: #FF6B00;
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(to bottom, #151515, #0a0a0a);
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        
+        .page-header h1 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .pricing-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .pricing-tab {
+            padding: 10px 25px;
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .pricing-tab:first-child {
+            border-radius: 6px 0 0 6px;
+        }
+        
+        .pricing-tab:last-child {
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .pricing-tab.active {
+            background: #FF6B00;
+            border-color: #FF6B00;
+        }
+        
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .plan-card {
+            background: #151515;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plan-card.popular {
+            transform: scale(1.03);
+            border-color: #FF6B00;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .plan-card.popular:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: #FF6B00;
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.85rem;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(255, 107, 0, 0.3);
+        }
+        
+        .plan-name {
+            font-size: 1.8rem;
+            margin: 0 0 10px 0;
+            color: #fff;
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #FF6B00;
+        }
+        
+        .plan-price .term {
+            font-size: 1rem;
+            color: #999;
+            font-weight: normal;
+        }
+        
+        .plan-description {
+            margin-bottom: 30px;
+            color: #bbb;
+        }
+        
+        .features-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+        }
+        
+        .features-list li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            color: #ddd;
+        }
+        
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00B894;
+            font-weight: bold;
+        }
+        
+        .plan-button {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            background: #FF6B00;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .plan-button:hover {
+            background: #e55e00;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+        }
+        
+        .plan-card.basic .plan-button {
+            background: #333;
+        }
+        
+        .plan-card.basic .plan-button:hover {
+            background: #444;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .bundle-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #fff;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #FF6B00;
+            border-radius: 2px;
+        }
+        
+        .bundles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .bundle-card {
+            background: #151515;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bundle-card:hover {
+            transform: translateY(-5px);
+            border-color: #FF6B00;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .bundle-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .bundle-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+            background: -webkit-linear-gradient(45deg, #3498db, #9b59b6, #00B894, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .bundle-name {
+            font-size: 1.6rem;
+            margin: 0;
+            color: #fff;
+        }
+        
+        .bundle-price {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FF6B00;
+        }
+        
+        .bundle-includes {
+            margin-bottom: 20px;
+        }
+        
+        .bundle-products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .bundle-product {
+            background: #222;
+            padding: 8px 12px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .bundle-product i {
+            margin-right: 8px;
+        }
+        
+        .windows-icon {
+            color: #3498db;
+        }
+        
+        .apple-icon {
+            color: #9b59b6;
+        }
+        
+        .android-icon {
+            color: #00B894;
+        }
+        
+        .data-icon {
+            color: #e74c3c;
+        }
+        
+        .mac-icon {
+            color: #f39c12;
+        }
+        
+        .efi-icon {
+            color: #2ecc71;
+        }
+        
+        .bundle-savings {
+            background: rgba(0, 184, 148, 0.1);
+            border-left: 3px solid #00B894;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .savings-amount {
+            font-weight: bold;
+            color: #00B894;
+        }
+        
+        .checkout-section {
+            margin-bottom: 60px;
+            background: #151515;
+            border-radius: 12px;
+            padding: 40px;
+            border: 1px solid #333;
+        }
+        
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .form-column h2 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ddd;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+        
+        .form-input:focus {
+            border-color: #FF6B00;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .checkout-button {
+            background: #FF6B00;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .checkout-button:hover {
+            background: #e55e00;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+        }
+        
+        .order-summary {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 25px;
+        }
+        
+        .order-summary h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        
+        .summary-label {
+            color: #bbb;
+        }
+        
+        .summary-value {
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            font-size: 1.2rem;
+        }
+        
+        .summary-total .summary-label {
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .summary-total .summary-value {
+            color: #FF6B00;
+            font-weight: bold;
+        }
+        
+        .secure-payment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        .secure-payment i {
+            margin-right: 8px;
+        }
+        
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .payment-method {
+            width: 40px;
+            height: 25px;
+            background: #fff;
+            border-radius: 4px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .payment-method img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .faq-section {
+            margin-bottom: 60px;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+        }
+        
+        .faq-item {
+            background: #151515;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            background: #1a1a1a;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+            background: #1a1a1a;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 300px;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .plans-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .checkout-section {
+                padding: 20px;
+            }
+            
+            .two-columns {
+                display: block;
+            }
+            
+            .form-column,
+            .summary-column {
+                margin-bottom: 30px;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a href="homepage.html" class="navbar-brand">
+                <i class="fas fa-tools"></i>
+                <span class="brand-fix">Fix</span><span class="brand-my">My</span><span class="brand-platform">System</span>
+            </a>
+            <div>
+                <a href="homepage.html" class="btn">Home</a>
+                <a href="downlaod.html" class="btn">Download</a>
+                <a href="#support" class="btn">Support</a>
+            </div>
+        </div>
+
+        <div class="page-header">
+            <h1>Unlock Premium Features</h1>
+            <p>Subscribe to access premium widgets and advanced diagnostic tools. Each subscription includes access to all tools for one device.</p>
+        </div>
+
+        <div class="pricing-tabs">
+            <div class="pricing-tab active" data-tab="individual">Subscription Options</div>
+            <div class="pricing-tab" data-tab="bundles">Business Solutions</div>
+        </div>
+
+        <div class="plans-container" id="individual-plans">
+            <!-- Monthly Plan -->
+            <div class="plan-card">
+                <div class="plan-name">Monthly Access</div>
+                <div class="plan-price">$29.99 <span class="term">/ month</span></div>
+                <p class="plan-description">Unlock all premium widgets and features across our entire tool suite with monthly flexibility.</p>
+                <ul class="features-list">
+                    <li>Access to ALL premium widgets</li>
+                    <li>All diagnostic & repair tools</li>
+                    <li>Unlimited widget usage</li>
+                    <li>Full feature catalog</li>
+                    <li>Cancel anytime</li>
+                    <li>Use on 1 device</li>
+                </ul>
+                <a href="#checkout" class="plan-button">Subscribe Monthly</a>
+            </div>
+
+            <!-- Annual Plan -->
+            <div class="plan-card popular">
+                <div class="popular-badge">Best Value</div>
+                <div class="plan-name">Annual Access</div>
+                <div class="plan-price">$119.99 <span class="term">/ year</span></div>
+                <p class="plan-description">Save over 65% with an annual subscription to all premium widgets and tools.</p>
+                <ul class="features-list">
+                    <li>Access to ALL premium widgets</li>
+                    <li>All diagnostic & repair tools</li>
+                    <li>Priority widget updates</li>
+                    <li>Full feature catalog</li>
+                    <li>Premium support access</li>
+                    <li>Use on 1 device</li>
+                </ul>
+                <a href="#checkout" class="plan-button">Subscribe Yearly</a>
+            </div>
+
+            <!-- Business Plan -->
+            <div class="plan-card basic">
+                <div class="plan-name">Business Access</div>
+                <div class="plan-price">$299.99 <span class="term">/ year</span></div>
+                <p class="plan-description">Comprehensive widget access for business environments with all features and priority support.</p>
+                <ul class="features-list">
+                    <li>Access to ALL premium widgets</li>
+                    <li>All diagnostic & repair suites</li>
+                    <li>Advanced enterprise features</li>
+                    <li>Priority support</li>
+                    <li>Business account management</li>
+                    <li>Use on multiple devices</li>
+                </ul>
+                <a href="#contact" class="plan-button">Contact Sales</a>
+            </div>
+        </div>
+
+        <div class="bundle-section" id="bundle-plans" style="display: none;">
+            <h2 class="section-title">Business Solutions</h2>
+            
+            <div class="bundles-container">
+                <div class="bundle-card">
+                    <div class="bundle-header">
+                        <div class="bundle-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="bundle-name">Small Business Plan</h3>
+                    </div>
+                    <div class="bundle-price">$299.99<span style="font-size: 1rem; color: #999; font-weight: normal;"> / year</span></div>
+                    <div class="bundle-includes">Complete access for small teams:</div>
+                    <div class="bundle-products">
+                        <div class="bundle-product">
+                            <i class="fas fa-tools"></i>
+                            All Premium Tools
+                        </div>
+                        <div class="bundle-product">
+                            <i class="fas fa-laptop"></i>
+                            Up to 5 Devices
+                        </div>
+                    </div>
+                    <div class="bundle-savings">
+                        <span class="savings-amount">Save $299.96</span> compared to individual device licenses
+                    </div>
+                    <div style="margin-bottom: 20px; font-size: 0.95rem; color: #bbb;">
+                        <p>Perfect for small teams or businesses needing to maintain multiple systems. Get complete access to all our premium diagnostic and repair widgets across all devices.</p>
+                    </div>
+                    <a href="#checkout" class="plan-button">Get Business Access</a>
+                </div>
+                
+                <div class="bundle-card">
+                    <div class="bundle-header">
+                        <div class="bundle-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="bundle-name">Medium Business Plan</h3>
+                    </div>
+                    <div class="bundle-price">$599.99<span style="font-size: 1rem; color: #999; font-weight: normal;"> / year</span></div>
+                    <div class="bundle-includes">Extended coverage for growing teams:</div>
+                    <div class="bundle-products">
+                        <div class="bundle-product">
+                            <i class="fas fa-tools"></i>
+                            All Premium Tools
+                        </div>
+                        <div class="bundle-product">
+                            <i class="fas fa-laptop"></i>
+                            Up to 15 Devices
+                        </div>
+                        <div class="bundle-product">
+                            <i class="fas fa-headset"></i>
+                            Priority Support
+                        </div>
+                    </div>
+                    <div class="bundle-savings">
+                        <span class="savings-amount">Save $1,199.86</span> compared to individual device licenses
+                    </div>
+                    <div style="margin-bottom: 20px; font-size: 0.95rem; color: #bbb;">
+                        <p>Ideal for growing businesses with multiple workstations and devices. Maintain your entire technology ecosystem with comprehensive diagnostic and repair capabilities.</p>
+                    </div>
+                    <a href="#checkout" class="plan-button">Get Business Access</a>
+                </div>
+                
+                <div class="bundle-card">
+                    <div class="bundle-header">
+                        <div class="bundle-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3 class="bundle-name">Enterprise Solution</h3>
+                    </div>
+                    <div class="bundle-price">$1,499.99<span style="font-size: 1rem; color: #999; font-weight: normal;"> / year</span></div>
+                    <div class="bundle-includes">Enterprise-grade coverage:</div>
+                    <div class="bundle-products">
+                        <div class="bundle-product">
+                            <i class="fas fa-tools"></i>
+                            All Premium Tools
+                        </div>
+                        <div class="bundle-product">
+                            <i class="fas fa-laptop"></i>
+                            Unlimited Devices
+                        </div>
+                        <div class="bundle-product">
+                            <i class="fas fa-headset"></i>
+                            24/7 Priority Support
+                        </div>
+                        <div class="bundle-product">
+                            <i class="fas fa-user-tie"></i>
+                            Dedicated Account Manager
+                        </div>
+                    </div>
+                    <div class="bundle-savings">
+                        <span class="savings-amount">Unlimited Value</span> with organization-wide coverage
+                    </div>
+                    <div style="margin-bottom: 20px; font-size: 0.95rem; color: #bbb;">
+                        <p>The ultimate solution for enterprises requiring comprehensive system diagnostics and repair across all devices. Includes centralized license management, detailed reporting, and customized support.</p>
+                    </div>
+                    <a href="#contact" class="plan-button">Contact Enterprise Sales</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="checkout-section" id="checkout">
+            <div class="two-columns">
+                <div class="form-column">
+                    <h2>Create Your Premium Account</h2>
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password" class="form-label">Create Password</label>
+                            <input type="password" id="password" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirm-password" class="form-label">Confirm Password</label>
+                            <input type="password" id="confirm-password" class="form-input" required>
+                        </div>
+                        
+                        <div style="margin: 25px 0; font-size: 0.95rem; color: #bbb;">
+                            <p>By clicking "Activate Premium Access", you agree to our <a href="#" style="color: #FF6B00; text-decoration: none;">Terms of Service</a> and <a href="#" style="color: #FF6B00; text-decoration: none;">Privacy Policy</a>, and authorize us to charge the subscription fee to your payment method.</p>
+                        </div>
+                        
+                        <button type="submit" class="checkout-button">Activate Premium Access</button>
+                    </form>
+                </div>
+                
+                <div class="summary-column">
+                    <div class="order-summary">
+                        <h3>How Premium Works</h3>
+                        <div style="padding: 10px 0; line-height: 1.6;">
+                            <p style="margin-bottom: 15px;">Premium activation is quick and simple:</p>
+                            
+                            <ol style="padding-left: 20px; margin-bottom: 20px;">
+                                <li style="margin-bottom: 10px;">Sign up with your email and password</li>
+                                <li style="margin-bottom: 10px;">Your account will be activated immediately</li>
+                                <li style="margin-bottom: 10px;">Download our software from the Downloads page</li>
+                                <li style="margin-bottom: 10px;">Open the software and log in with your email and password</li>
+                                <li style="margin-bottom: 0px;">Enjoy full access to all premium features!</li>
+                            </ol>
+                            
+                            <p>You'll receive a confirmation email with your account details and instructions for accessing premium features.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="account-note" style="margin-top: 20px; background: rgba(0, 184, 148, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #00B894; font-size: 0.95rem;">
+                        <p style="margin: 0 0 10px 0;"><strong>Important:</strong></p>
+                        <p style="margin: 0 0 10px 0;">Your premium access is linked to your email. Use the same email and password when logging into any of our applications.</p>
+                        <p style="margin: 0;">All your settings, diagnostics, and repair history will be saved to your account automatically.</p>
+                    </div>
+                    
+                    <div class="secure-payment">
+                        <i class="fas fa-lock"></i> Your account information is secured with encryption
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are widgets and how do they work? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Widgets are specialized tools within our applications that provide advanced diagnostics and repair capabilities. While our base applications are free and include basic features, premium widgets unlock the full power of our tools. After subscribing, you can download and use these widgets directly within the application interface.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I access premium widgets after subscribing? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Accessing premium features is simple. After signing up with your email and password, you'll receive a confirmation email. Then, download the software from our Downloads page, open it, and log in using the same email and password you registered with. The system will automatically recognize your premium status, and all premium features will be immediately available to you without any additional steps.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Does my subscription cover all tools in the suite? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, each subscription provides access to premium widgets across our entire suite of tools. You can use any of our tools (FixMyWindows, FixMyMac, FixMyData, etc.) on one device with a single subscription. The business plan allows usage across multiple devices.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What happens if my subscription expires? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If your subscription expires, you'll maintain access to the base application, but premium widgets will no longer function until you renew your subscription. Any reports or data you've generated using the widgets will still be accessible, but you won't be able to run new premium diagnostics or repairs until your subscription is renewed.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I transfer my subscription to another computer? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, your subscription is tied to your account, not to a specific device. You can install the application on multiple computers (up to the limit specified in your plan) and sign in with your account credentials to access your premium widgets on each device.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are subscriptions automatically renewed? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, for your convenience, subscriptions automatically renew at the end of your subscription period. You can manage your subscription settings, including auto-renewal, through your account dashboard. We'll send you a reminder email before each renewal to ensure you're aware of the upcoming charge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2023 FixMySystem. All rights reserved. All trademarks are property of their respective owners.</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.pricing-tab');
+            const individualPlans = document.getElementById('individual-plans');
+            const bundlePlans = document.getElementById('bundle-plans');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Show/hide appropriate plan section
+                    if (this.dataset.tab === 'individual') {
+                        individualPlans.style.display = 'grid';
+                        bundlePlans.style.display = 'none';
+                    } else {
+                        individualPlans.style.display = 'none';
+                        bundlePlans.style.display = 'block';
+                    }
+                });
+            });
+            
+            // FAQ accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', function() {
+                    // Toggle active class on clicked item
+                    item.classList.toggle('active');
+                    
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            // Form submission
+            const checkoutForm = document.getElementById('checkout-form');
+            
+            checkoutForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('This is a demo form. In a real application, this would process your payment securely.');
+            });
+        });
+    </script>
+</body>
+</html>

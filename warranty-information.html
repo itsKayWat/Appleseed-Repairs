@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warranty Policy - AppleSeed Repairs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Color Scheme */
+            --primary-dark: #1a1a1a;
+            --primary-light: #ffffff;
+            --accent-orange: #FFA500;  /* Orange for "Apple" */
+            --accent-blue: #00a9ff;    /* Blue for "Repairs" */
+            --accent-hover-blue: #0088cc;
+            --text-secondary: #a1a1aa;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--primary-dark);
+            color: var(--primary-light);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Terms Content Styling */
+        .terms-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        .terms-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .terms-section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+        }
+
+        h3 {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            margin: var(--spacing-md) 0 var(--spacing-sm);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        li::before {
+            content: '•';
+            color: var(--accent-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        .important-notice {
+            background: rgba(0, 169, 255, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            box-shadow: 0 0 20px rgba(0, 169, 255, 0.1);
+        }
+
+        .important-notice h4 {
+            color: var(--accent-blue);
+            margin-top: 0;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: var(--primary-dark);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-apple {
+            color: #FFA500; /* Orange */
+        }
+
+        .logo-seed {
+            color: #90EE90; /* Light green */
+        }
+
+        .logo-repairs {
+            color: #00a9ff; /* Blue */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .send-in-repair {
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-hover-blue));
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .send-in-repair:hover {
+            opacity: 0.9;
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-dark);
+                padding: var(--spacing-md);
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="https://www.fixmyapple.org/" class="logo">
+                <span class="logo-apple">Apple</span>
+                <span class="logo-seed">Seed</span>
+                <span class="logo-repairs">Repairs</span>
+            </a>
+            <div class="nav-links">
+                <a href="https://sites.google.com/view/appleseed-repairs-services/">
+                    <i class="fas fa-tools"></i> Services
+                </a>
+                <a href="https://www.kaywat.me/">
+                    <i class="fas fa-info-circle"></i> About
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepairs-contact/home">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+                <a href="https://blog.fixmyapple.org/" target="_blank">
+                    <i class="fas fa-blog"></i> Blog
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepair-mail-in">
+                    <i class="fas fa-shipping-fast"></i> Send-in Repair
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="terms-container">
+        <h1>Warranty Policy</h1>
+        
+        <div class="important-notice">
+            <h4>Warranty Coverage Overview</h4>
+            <p>AppleSeed Repairs provides a 60-day limited warranty on all parts and repair services, excluding liquid damage repairs. This warranty covers defects in parts and workmanship related to the specific repair performed.</p>
+        </div>
+
+        <section class="terms-section">
+            <h2>Warranty Coverage</h2>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>What's Covered</h3>
+                    <ul>
+                        <li>Defects in replacement parts</li>
+                        <li>Issues directly related to our repair work</li>
+                        <li>Malfunctions of repaired components</li>
+                        <li>Installation-related problems</li>
+                    </ul>
+                </div>
+
+                <div class="terms-card">
+                    <h3>What's Not Covered</h3>
+                    <ul>
+                        <li>Liquid damage repairs</li>
+                        <li>Physical/accidental damage after repair</li>
+                        <li>Issues unrelated to the original repair</li>
+                        <li>Unauthorized modification or tampering</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="terms-section">
+            <h2>Warranty Terms</h2>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>Duration</h3>
+                    <ul>
+                        <li>60 days from the date of repair completion</li>
+                        <li>Coverage begins immediately after repair</li>
+                        <li>Warranty is non-transferable</li>
+                        <li>Valid only for original repair customer</li>
+                    </ul>
+                </div>
+
+                <div class="important-notice">
+                    <h4>Liquid Damage Exception</h4>
+                    <p>Due to the unpredictable nature of liquid damage and potential for ongoing corrosion, repairs for liquid-damaged devices do not carry a warranty. This includes any repairs performed on devices with active or previous liquid damage indicators.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="terms-section">
+            <h2>Warranty Claims</h2>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>Claim Process</h3>
+                    <ul>
+                        <li>Contact us immediately upon discovering an issue</li>
+                        <li>Provide original repair order number</li>
+                        <li>Describe the problem in detail</li>
+                        <li>Schedule warranty service evaluation</li>
+                    </ul>
+                </div>
+
+                <div class="terms-card">
+                    <h3>Required Documentation</h3>
+                    <ul>
+                        <li>Original repair receipt</li>
+                        <li>Device must be in same condition as after repair</li>
+                        <li>Proof of original repair payment</li>
+                        <li>Valid identification matching repair order</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="terms-section">
+            <h2>Warranty Limitations</h2>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>Void Conditions</h3>
+                    <ul>
+                        <li>Unauthorized repairs or modifications</li>
+                        <li>Physical damage after repair</li>
+                        <li>Removal of warranty seals</li>
+                        <li>Tampering with repaired components</li>
+                    </ul>
+                </div>
+
+                <div class="important-notice">
+                    <h4>Additional Terms</h4>
+                    <p>This warranty gives you specific legal rights, and you may also have other rights which vary from state to state. AppleSeed Repairs reserves the right to refuse warranty service if evidence of misuse, tampering, or unauthorized modification is found.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="terms-section">
+            <h2>Warranty Specifics & Coverage Details</h2>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>Part-Specific Coverage</h3>
+                    <ul>
+                        <li>Warranty applies only to the specific part(s) we replaced</li>
+                        <li>Coverage limited to manufacturer defects only</li>
+                        <li>Warranty claims subject to vendor verification</li>
+                        <li>Warranty approval depends on vendor part evaluation</li>
+                    </ul>
+                </div>
+
+                <div class="important-notice">
+                    <h4>Warranty Validation Process</h4>
+                    <p>Our warranty coverage is directly tied to our vendors' evaluation process. A part will only be considered defective if our vendor confirms a manufacturer defect and issues credit. We maintain this policy to ensure consistent quality standards across all repairs. Accidental damage, drops, or misuse are not covered under our standard warranty.</p>
+                </div>
+
+                <div class="terms-card">
+                    <h3>Accidental Damage Protection Plan</h3>
+                    <ul>
+                        <li>Optional coverage for accidental damage</li>
+                        <li>Covers up to 5 devices for one year</li>
+                        <li>All devices must be registered at time of purchase</li>
+                        <li>Devices must be in working, pristine condition</li>
+                        <li>Pre-existing damage not eligible for coverage</li>
+                    </ul>
+                </div>
+
+                <div class="important-notice">
+                    <h4>Accidental Protection Plan Requirements</h4>
+                    <p>Our Accidental Damage Protection Plan must be purchased and registered with all devices present and undamaged. A technician will inspect each device to verify eligibility. Previously damaged devices cannot be added to the protection plan. This inspection and approval process ensures fair coverage for all customers.</p>
+                </div>
+
+                <div class="terms-card">
+                    <h3>What's Not Covered</h3>
+                    <ul>
+                        <li>Accidental damage under standard warranty</li>
+                        <li>Damage from drops or impacts</li>
+                        <li>Water or liquid damage</li>
+                        <li>Pre-existing conditions</li>
+                        <li>Unauthorized repair attempts</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 

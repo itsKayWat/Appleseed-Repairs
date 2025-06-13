@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 15 Pro Max Repair Guide - AppleSeed Repairs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #ffffff;
+            --accent-orange: #FFA500;
+            --accent-green: #90EE90;
+            --accent-blue: #1E90FF;
+            --accent-hover-blue: #1873CC;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+        }
+
+        /* Base styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            position: fixed;
+            width: 100%;
+            z-index: 1001;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            top: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .logo-apple { color: var(--accent-orange); }
+        .logo-seed { color: var(--accent-green); }
+        .logo-repairs { color: var(--accent-blue); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:not(.send-in-repair):hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .send-in-repair {
+            background: var(--accent-blue);
+            color: white !important;
+        }
+
+        .send-in-repair:hover {
+            background: var(--accent-hover-blue);
+        }
+
+        /* Blog Content Styles */
+        .blog-container {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 20px;
+        }
+
+        .blog-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            color: var(--accent-green);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            margin: 2rem 0 1rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        p, ul, ol {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .technical-specs, .repair-warning {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .repair-warning {
+            border-left: 4px solid var(--accent-orange);
+        }
+
+        .tool-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .tool-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-dark);
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* New Styles for Step-by-Step Guide */
+        .repair-steps {
+            margin: 40px 0;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background: var(--accent-orange);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .step-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .nav-button {
+            background: var(--accent-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: var(--accent-hover-blue);
+        }
+
+        .caution-box {
+            background: rgba(255, 165, 0, 0.1);
+            border-left: 4px solid var(--accent-orange);
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .tool-required {
+            display: inline-block;
+            background: rgba(30, 144, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+            border-radius: 2px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-blue);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .step-navigation-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(26, 26, 26, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .step-progress {
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .step-progress-bar {
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin: 10px 0;
+        }
+
+        .step-progress-fill {
+            height: 100%;
+            background: var(--accent-blue);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .nav-button {
+            background: var(--accent-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .nav-button:not(:disabled):hover {
+            background: var(--accent-hover-blue);
+        }
+
+        .step-card {
+            display: none;
+        }
+
+        .step-card.active {
+            display: block;
+        }
+
+        /* New and Enhanced Styles */
+        .repair-guide-container {
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .minimize-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-blue);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1002;
+        }
+
+        .minimize-button:hover {
+            background: var(--accent-hover-blue);
+            transform: scale(1.1);
+        }
+
+        .floating-guide-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1003;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 165, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 165, 0, 0);
+            }
+        }
+
+        .floating-guide-icon i {
+            font-size: 24px;
+            color: white;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .step-card.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-image-container {
+            position: relative;
+            margin: 20px 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .step-image {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .step-image:hover {
+            transform: scale(1.05);
+        }
+
+        .image-zoom {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .step-image-container:hover .image-zoom {
+            opacity: 1;
+        }
+
+        /* Enhanced Navigation Styles */
+        .step-navigation-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(26, 26, 26, 0.95);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 600px;
+            transition: all 0.3s ease;
+        }
+
+        .step-navigation-window {
+            position: fixed;
+            bottom: 80px;
+            right: 30px;
+            width: 400px;
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: none;
+        }
+
+        .step-window-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .step-content {
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .step-navigation-controls {
+            padding: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .step-card {
+            display: none;
+        }
+
+        .step-card.active {
+            display: block;
+        }
+
+        .floating-guide-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1003;
+            animation: pulse 2s infinite;
+        }
+
+        .step-navigation-window {
+            width: 450px;
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .warning-messages {
+            padding: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .warning-scroll {
+            max-height: 150px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .warning-item {
+            background: rgba(255, 165, 0, 0.1);
+            border-left: 3px solid var(--accent-orange);
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .step-navigation-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-button {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background: #e69500;
+        }
+
+        /* Add orange buttons to main content steps */
+        .repair-guide-section .step-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .repair-guide-section .nav-button {
+            background: var(--accent-orange);
+            font-size: 1.1rem;
+            padding: 12px 24px;
+        }
+
+        .main-navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .warnings-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .warnings-modal .modal-content {
+            position: relative;
+            background: var(--primary-dark);
+            width: 90%;
+            max-width: 800px;
+            margin: 50px auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-body .warning-item {
+            background: rgba(255, 165, 0, 0.1);
+            border-left: 4px solid var(--accent-orange);
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .expand-warnings {
+            background: var(--accent-orange);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .expand-warnings:hover {
+            background: #e69500;
+        }
+
+        /* Full screen step viewer */
+        .step-fullscreen-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .step-fullscreen-content {
+            position: relative;
+            background: var(--primary-dark);
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .step-fullscreen-navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.95);
+            padding: 15px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .step-fullscreen-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .step-fullscreen-close:hover {
+            opacity: 1;
+        }
+
+        /* Enhanced navigation buttons */
+        .nav-button {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background: #e69500;
+            transform: translateY(-2px);
+        }
+
+        .step-counter {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .guide-title {
+            color: #FF9500; /* Apple's orange */
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+
+        /* Specific styling for main page navigation buttons only */
+        .main-navigation-buttons .nav-button {
+            background: #34C759; /* Apple's green color */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            border: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .main-navigation-buttons .nav-button:hover {
+            background: #248A3D; /* Darker shade for hover */
+        }
+
+        .main-navigation-buttons .nav-button:disabled {
+            background: rgba(52, 199, 89, 0.5); /* Semi-transparent green when disabled */
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation with Logo -->
+    <div class="nav-container">
+        <nav class="navbar">
+            <div style="display: flex; align-items: center;">
+                <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FHomepage%20-%20Cover%20Photos%2FAppleseed%20Repairs%20Logo.png?alt=media&token=26dff826-e940-4700-997b-e27145675d6c" 
+                     alt="AppleseedRepairs Logo"
+                     style="height: 55px; margin-right: 0px;">
+                <span style="font-size: 24px;">
+                    <span style="color: #FFA500;">Apple</span><span style="color: #228B22;">Seed</span> <span style="color: #1E90FF;">Repairs</span>
+                </span>
+            </div>
+            <div class="nav-links">
+                <a href="https://sites.google.com/view/appleseed-repairs-services/">
+                    <i class="fas fa-tools"></i> Services
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepairs-bookrepair/home">
+                    <i class="fas fa-calendar-check"></i> Book Repair
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepairs-contact/home">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+                <a href="https://sites.google.com/view/appleseed-repairs-blog-dash/home">
+                    <i class="fas fa-blog"></i> Blog
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepair-mail-in/home" class="send-in-repair">
+                    <i class="fas fa-shipping-fast"></i> Send-in Repair
+                </a>
+            </div>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Blog Content -->
+    <div class="blog-container">
+        <div class="blog-content">
+            <h1 class="guide-title">iPhone 15 Pro Max Repair Guide: Complete Teardown & Repair Manual</h1>
+            <div class="blog-meta">
+                <span><i class="fas fa-calendar"></i> March 19, 2024</span>
+                <span><i class="fas fa-folder"></i> Repairs</span>
+                <span><i class="fas fa-clock"></i> 15 min read</span>
+                <span><i class="fas fa-wrench"></i> Professional Difficulty</span>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+
+            <p class="introduction">
+                Welcome to AppleSeed Repairs' comprehensive guide on iPhone 15 Pro Max repairs. This detailed walkthrough will guide you through common repairs, from screen replacement to battery service. Our guide combines professional expertise with step-by-step instructions to help both DIY enthusiasts and repair professionals.
+            </p>
+
+            <!-- Step-by-Step Guide Section -->
+            <div class="repair-guide-section">
+                <h2>Step-by-Step Repair Guide</h2>
+                <div class="main-navigation-buttons">
+                    <button class="nav-button prev-step">
+                        <i class="fas fa-arrow-left"></i> Previous Step
+                    </button>
+                    <span class="step-counter">Step <span class="current-step">1</span> of 8</span>
+                    <button class="nav-button next-step">
+                        Next Step <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Step Cards - Only one will be visible at a time -->
+                <div class="step-card active" id="step1">
+                    <div class="step-number">1</div>
+                    <h3>Device Preparation</h3>
+                    <img src="/images/repair-steps/iphone15-step1.png" alt="iPhone 15 Pro Max preparation" class="step-image">
+                    <p>Begin by powering down your iPhone 15 Pro Max and removing the two pentalobe screws at the bottom edge near the charging port.</p>
+                    <div class="tool-required">P2 Pentalobe Driver</div>
+                </div>
+
+                <div class="step-card" id="step2">
+                    <div class="step-number">2</div>
+                    <h3>Screen Removal</h3>
+                    <img src="/images/repair-steps/iphone15-step2.png" alt="iPhone 15 Pro Max screen removal" class="step-image">
+                    <p>Apply heat to the edges of the phone for about 1 minute to soften the adhesive. Use the suction handle to create a small gap.</p>
+                    <div class="tool-required">Heat Gun</div>
+                </div>
+
+                <div class="step-card" id="step3">
+                    <div class="step-number">3</div>
+                    <h3>Battery Disconnection</h3>
+                    <img src="/images/repair-steps/iphone15-step3.png" alt="iPhone 15 Pro Max battery disconnection" class="step-image">
+                    <p>Once the screen is lifted, immediately locate and disconnect the battery connector.</p>
+                    <div class="tool-required">Spudger</div>
+                </div>
+
+                <div class="step-card" id="step4">
+                    <div class="step-number">4</div>
+                    <h3>Display Cable Disconnection</h3>
+                    <img src="/images/repair-steps/iphone15-step4.png" alt="iPhone 15 Pro Max display disconnection" class="step-image">
+                    <p>Carefully disconnect the display cables and remove the metal shield covering them.</p>
+                    <div class="tool-required">Y000 Screwdriver</div>
+                </div>
+
+                <div class="step-card" id="step5">
+                    <div class="step-number">5</div>
+                    <h3>Battery Removal</h3>
+                    <img src="/images/repair-steps/iphone15-step5.png" alt="iPhone 15 Pro Max battery removal" class="step-image">
+                    <p>Remove the battery adhesive strips and carefully lift out the battery.</p>
+                    <div class="tool-required">Adhesive Remover</div>
+                </div>
+
+                <div class="step-card" id="step6">
+                    <div class="step-number">6</div>
+                    <h3>Camera System Removal</h3>
+                    <img src="/images/repair-steps/iphone15-step6.png" alt="iPhone 15 Pro Max camera removal" class="step-image">
+                    <p>Remove the camera shield and disconnect the camera system connectors.</p>
+                    <div class="tool-required">Y000 Screwdriver</div>
+                </div>
+
+                <div class="step-card" id="step7">
+                    <div class="step-number">7</div>
+                    <h3>Logic Board Removal</h3>
+                    <img src="/images/repair-steps/iphone15-step7.png" alt="iPhone 15 Pro Max logic board removal" class="step-image">
+                    <p>Remove all visible screws and carefully disconnect all connectors from the logic board.</p>
+                    <div class="tool-required">Multiple Screwdrivers</div>
+                </div>
+
+                <div class="step-card" id="step8">
+                    <div class="step-number">8</div>
+                    <h3>Reassembly Process</h3>
+                    <img src="/images/repair-steps/iphone15-step8.png" alt="iPhone 15 Pro Max reassembly" class="step-image">
+                    <p>Carefully reassemble all components in reverse order, ensuring proper connection of all cables.</p>
+                    <div class="tool-required">All Previous Tools</div>
+                </div>
+            </div>
+
+            <!-- Quick Navigation Floating Button -->
+            <div class="floating-guide-icon" onclick="toggleGuideView()">
+                <i class="fas fa-wrench"></i>
+            </div>
+
+            <!-- Quick Navigation Window -->
+            <div class="step-navigation-window">
+                <div class="step-window-header">
+                    <h3>iPhone 15 Pro Max Repair Steps</h3>
+                    <button class="minimize-button" onclick="toggleGuideView()">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+
+                <div class="step-content">
+                    <div class="current-step-display">
+                        <img src="/images/repair-steps/iphone15-step1.png" alt="iPhone 15 Pro Max preparation" class="step-image">
+                        <h4>Device Preparation</h4>
+                        <p>Begin by powering down your iPhone 15 Pro Max and removing the two pentalobe screws...</p>
+                    </div>
+                </div>
+
+                <div class="warning-messages">
+                    <div class="warning-header">
+                        <h4>⚠️ Important Warnings</h4>
+                        <button class="expand-warnings" onclick="expandWarnings()">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                    <div class="warning-scroll">
+                        <div class="warning-item">
+                            <strong>Battery Safety:</strong>
+                            <p>Never puncture or bend the battery. If swelling occurs, immediately discontinue repair.</p>
+                        </div>
+                        <div class="warning-item">
+                            <strong>Screen Handling:</strong>
+                            <p>OLED screens are extremely fragile. Handle edges with care.</p>
+                        </div>
+                        <div class="warning-item">
+                            <strong>Screw Management:</strong>
+                            <p>Keep track of all screws. Different lengths can damage components if mixed up.</p>
+                        </div>
+                        <div class="warning-item">
+                            <strong>Water Damage:</strong>
+                            <p>Check liquid indicators before proceeding with any repair.</p>
+                        </div>
+                        <div class="warning-item">
+                            <strong>Face ID Components:</strong>
+                            <p>Handle front sensor assembly with extreme care to maintain Face ID functionality.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-navigation-controls">
+                    <button class="nav-button prev-step">
+                        <i class="fas fa-arrow-left"></i> Previous Step
+                    </button>
+                    <span class="step-counter">Step <span class="current-step">1</span> of 8</span>
+                    <button class="nav-button next-step">
+                        Next Step <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="technical-specs">
+                <h2>Device Specifications</h2>
+                <ul>
+                    <li>Dimensions: 159.9 × 76.7 × 8.25 mm</li>
+                    <li>Weight: 221 g</li>
+                    <li>Display: 6.7-inch Super Retina XDR OLED</li>
+                    <li>Resolution: 2796 × 1290 pixels (460 ppi)</li>
+                    <li>Processor: A17 Pro chip</li>
+                    <li>RAM: 8 GB</li>
+                    <li>Battery: 4422 mAh</li>
+                    <li>Water Resistance: IP68 (maximum depth of 6 meters up to 30 minutes)</li>
+                </ul>
+            </div>
+
+            <div class="repair-warning">
+                <h3><i class="fas fa-exclamation-triangle"></i> Important Safety Notice</h3>
+                <p>Before beginning any repair:</p>
+                <ul>
+                    <li>Power down the device completely</li>
+                    <li>Disconnect the battery as soon as possible</li>
+                    <li>Wear appropriate safety gear (ESD strap, eye protection)</li>
+                    <li>Keep track of all screws and components</li>
+                    <li>Work in a clean, well-lit environment</li>
+                </ul>
+            </div>
+
+            <h2>Required Tools</h2>
+            <div class="tool-list">
+                <div class="tool-item">
+                    <i class="fas fa-screwdriver"></i>
+                    <span>P2 Pentalobe Screwdriver</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-wrench"></i>
+                    <span>Tri-point Y000 Screwdriver</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-thermometer-half"></i>
+                    <span>Heat Gun or iOpener</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-scissors"></i>
+                    <span>Spudger and Opening Picks</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-magnet"></i>
+                    <span>Magnetic Screw Mat</span>
+                </div>
+                <div class="tool-item">
+                    <i class="fas fa-compress-arrows-alt"></i>
+                    <span>Suction Handle</span>
+                </div>
+            </div>
+
+            <div class="troubleshooting-section">
+                <h2>Common Issues & Solutions</h2>
+                <div class="issue-card">
+                    <h3>Face ID Not Working</h3>
+                    <p>Common causes:</p>
+                    <ul>
+                        <li>Damaged or disconnected front sensor assembly</li>
+                        <li>Improper screen replacement</li>
+                        <li>Software calibration issues</li>
+                    </ul>
+                    <p>Solution: Verify all front sensor connections and ensure proper calibration.</p>
+                </div>
+
+                <div class="issue-card">
+                    <h3>Camera Malfunction</h3>
+                    <p>Possible issues:</p>
+                    <ul>
+                        <li>Loose camera connectors</li>
+                        <li>Damaged flex cables</li>
+                        <li>Improper camera alignment</li>
+                    </ul>
+                    <p>Solution: Check all camera connections and verify proper mounting.</p>
+                </div>
+
+                <!-- More troubleshooting cards... -->
+            </div>
+
+            <div class="farewell">
+                <h3>Professional Repair Services</h3>
+                <p>While this guide provides detailed instructions for iPhone 15 Pro Max repairs, some issues require professional expertise. At AppleSeed Repairs, our certified technicians use genuine parts and specialized tools to ensure your device is repaired to the highest standards.</p>
+            </div>
+
+            <div class="share-section">
+                <h3>Share This Guide</h3>
+                <p>Found this guide helpful? Share it with other iPhone users who might need repair assistance!</p>
+                <div class="social-buttons">
+                    <!-- Add social sharing buttons -->
+                </div>
+            </div>
+
+            <div class="thank-you">
+                <p>Thank you for reading our comprehensive iPhone 15 Pro Max repair guide. For professional repairs and support, visit any AppleSeed Repairs location or contact us for mail-in repair services.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full-screen warnings modal -->
+    <div class="warnings-modal" id="warningsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚠️ Important Safety Warnings</h3>
+                <button class="close-modal" onclick="closeWarningsModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="warning-item">
+                    <strong>Battery Safety:</strong>
+                    <p>Never puncture or bend the battery. If swelling occurs, immediately discontinue repair.</p>
+                </div>
+                <div class="warning-item">
+                    <strong>Screen Handling:</strong>
+                    <p>OLED screens are extremely fragile. Handle edges with care.</p>
+                </div>
+                <div class="warning-item">
+                    <strong>Screw Management:</strong>
+                    <p>Keep track of all screws. Different lengths can damage components if mixed up.</p>
+                </div>
+                <div class="warning-item">
+                    <strong>Water Damage:</strong>
+                    <p>Check liquid indicators before proceeding with any repair.</p>
+                </div>
+                <div class="warning-item">
+                    <strong>Face ID Components:</strong>
+                    <p>Handle front sensor assembly with extreme care to maintain Face ID functionality.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add full screen modal -->
+    <div class="step-fullscreen-modal" id="stepFullscreenModal">
+        <div class="step-fullscreen-content">
+            <button class="step-fullscreen-close" onclick="document.getElementById('stepFullscreenModal').style.display='none';">×</button>
+            <div class="step-content">
+                <!-- Step content will be cloned here -->
+            </div>
+            <div class="step-fullscreen-navigation">
+                <button class="nav-button prev-step">
+                    <i class="fas fa-arrow-left"></i> Previous Step
+                </button>
+                <span class="step-counter">Step <span class="current-step">1</span> of 8</span>
+                <button class="nav-button next-step">
+                    Next Step <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Strictly page-only navigation system
+        class PageNavigation {
+            constructor() {
+                this.steps = document.querySelectorAll('.step-card');
+                this.currentIndex = 0;
+                this.totalSteps = this.steps.length;
+                
+                // Get page navigation elements
+                this.prevButton = document.querySelector('.main-navigation-buttons .prev-step');
+                this.nextButton = document.querySelector('.main-navigation-buttons .next-step');
+                this.stepCounter = document.querySelector('.main-navigation-buttons .current-step');
+                
+                // Bind event listeners
+                this.prevButton.addEventListener('click', () => this.navigate('prev'));
+                this.nextButton.addEventListener('click', () => this.navigate('next'));
+                
+                // Initialize
+                this.updateUI();
+            }
+            
+            navigate(direction) {
+                let newIndex = this.currentIndex;
+                
+                if (direction === 'next' && this.currentIndex < this.totalSteps - 1) {
+                    newIndex = this.currentIndex + 1;
+                } else if (direction === 'prev' && this.currentIndex > 0) {
+                    newIndex = this.currentIndex - 1;
+                } else {
+                    return;
+                }
+                
+                // Update active step
+                this.steps[this.currentIndex].classList.remove('active');
+                this.steps[newIndex].classList.add('active');
+                
+                // Update current index
+                this.currentIndex = newIndex;
+                
+                // Update UI
+                this.updateUI();
+                
+                // Scroll to new step
+                this.steps[newIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            updateUI() {
+                // Update counter
+                this.stepCounter.textContent = this.currentIndex + 1;
+                
+                // Update button states
+                this.prevButton.disabled = this.currentIndex === 0;
+                this.nextButton.disabled = this.currentIndex === this.totalSteps - 1;
+            }
+        }
+
+        // Initialize page navigation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize page navigation
+            const pageNav = new PageNavigation();
+            
+            // Show first step
+            const steps = document.querySelectorAll('.step-card');
+            steps[0].classList.add('active');
+        });
+
+        // Popup navigation system (for orange wrench button)
+        function navigatePopupSteps(direction) {
+            const steps = document.querySelectorAll('.step-card');
+            const currentStep = document.querySelector('.step-card.active');
+            const currentIndex = Array.from(steps).indexOf(currentStep);
+            const totalSteps = steps.length;
+            
+            let newIndex;
+            if (direction === 'next' && currentIndex < totalSteps - 1) {
+                newIndex = currentIndex + 1;
+            } else if (direction === 'prev' && currentIndex > 0) {
+                newIndex = currentIndex - 1;
+            } else {
+                return;
+            }
+
+            showStepFullscreen(newIndex);
+        }
+
+        // Initialize popup navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const popupNavigation = document.querySelector('.step-navigation-window');
+            if (popupNavigation) {
+                popupNavigation.querySelector('.prev-step').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navigatePopupSteps('prev');
+                });
+                popupNavigation.querySelector('.next-step').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navigatePopupSteps('next');
+                });
+            }
+        });
+
+        function updateAllNavigationElements(currentIndex, totalSteps) {
+            // Update all step counters
+            document.querySelectorAll('.current-step').forEach(element => {
+                element.textContent = currentIndex + 1;
+            });
+
+            // Update all progress bars
+            document.querySelectorAll('.step-progress-fill').forEach(element => {
+                element.style.width = `${((currentIndex + 1) / totalSteps) * 100}%`;
+            });
+
+            // Update all navigation buttons
+            const prevButtons = document.querySelectorAll('.prev-step');
+            const nextButtons = document.querySelectorAll('.next-step');
+
+            prevButtons.forEach(button => {
+                button.disabled = currentIndex === 0;
+                button.style.opacity = currentIndex === 0 ? '0.5' : '1';
+            });
+
+            nextButtons.forEach(button => {
+                button.disabled = currentIndex === totalSteps - 1;
+                button.style.opacity = currentIndex === totalSteps - 1 ? '0.5' : '1';
+            });
+        }
+
+        // Enhanced escape key handling
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const warningsModal = document.getElementById('warningsModal');
+                const navigationWindow = document.querySelector('.step-navigation-window');
+                
+                if (warningsModal.style.display === 'block') {
+                    // If warnings are in full screen, minimize them first
+                    closeWarningsModal();
+                    isFullScreen = false;
+                } else if (navigationWindow.style.display === 'block') {
+                    // If navigation window is visible, minimize to orange button
+                    toggleGuideView();
+                }
+            }
+        });
+
+        function expandWarnings() {
+            const modal = document.getElementById('warningsModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            isFullScreen = true;
+        }
+
+        function closeWarningsModal() {
+            const modal = document.getElementById('warningsModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleGuideView() {
+            const navigationWindow = document.querySelector('.step-navigation-window');
+            const floatingIcon = document.querySelector('.floating-guide-icon');
+            
+            if (navigationWindow.style.display === 'none' || !navigationWindow.style.display) {
+                navigationWindow.style.display = 'block';
+                floatingIcon.style.display = 'none';
+            } else {
+                navigationWindow.style.display = 'none';
+                floatingIcon.style.display = 'flex';
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const steps = document.querySelectorAll('.step-card');
+            const totalSteps = steps.length;
+            
+            // Show first step
+            steps[0].classList.add('active');
+            
+            // Initialize navigation state
+            updateAllNavigationElements(0, totalSteps);
+            
+            // Start with navigation window hidden and floating icon visible
+            const navigationWindow = document.querySelector('.step-navigation-window');
+            const floatingIcon = document.querySelector('.floating-guide-icon');
+            
+            navigationWindow.style.display = 'none';
+            floatingIcon.style.display = 'flex';
+        });
+
+        function showStepFullscreen(stepIndex) {
+            const modal = document.getElementById('stepFullscreenModal');
+            const steps = document.querySelectorAll('.step-card');
+            const stepContent = steps[stepIndex].cloneNode(true);
+            
+            // Clear and update modal content
+            const modalContent = modal.querySelector('.step-content');
+            modalContent.innerHTML = '';
+            modalContent.appendChild(stepContent);
+            
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Update navigation state
+            updateAllNavigationElements(stepIndex, steps.length);
+        }
+
+        function closeStepFullscreen() {
+            const modal = document.getElementById('stepFullscreenModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Update navigation function
+        function navigatePageSteps(direction) {
+            const steps = document.querySelectorAll('.step-card');
+            const currentStep = document.querySelector('.step-card.active');
+            const currentIndex = Array.from(steps).indexOf(currentStep);
+            const totalSteps = steps.length;
+            
+            let newIndex;
+            if (direction === 'next' && currentIndex < totalSteps - 1) {
+                newIndex = currentIndex + 1;
+            } else if (direction === 'prev' && currentIndex > 0) {
+                newIndex = currentIndex - 1;
+            } else {
+                return;
+            }
+
+            // Update active step
+            steps[currentIndex].classList.remove('active');
+            steps[newIndex].classList.add('active');
+            
+            // Show in fullscreen
+            showStepFullscreen(newIndex);
+        }
+
+        // Enhanced escape key handling
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const fullscreenModal = document.getElementById('stepFullscreenModal');
+                if (fullscreenModal.style.display === 'block') {
+                    closeStepFullscreen();
+                }
+            }
+        });
+
+        // Close fullscreen when clicking outside
+        document.getElementById('stepFullscreenModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeStepFullscreen();
+            }
+        });
+
+        // Initialize with click handlers for step cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const steps = document.querySelectorAll('.step-card');
+            steps.forEach((step, index) => {
+                step.addEventListener('click', () => showStepFullscreen(index));
+            });
+        });
+
+        // Popup/Overlay Navigation System
+        class PopupNavigation {
+            constructor() {
+                this.steps = document.querySelectorAll('.step-card');
+                this.currentIndex = 0;
+                this.totalSteps = this.steps.length;
+                
+                // Get popup navigation elements
+                const popupNavigation = document.querySelector('.step-navigation-window');
+                this.prevButton = popupNavigation.querySelector('.prev-step');
+                this.nextButton = popupNavigation.querySelector('.next-step');
+                this.stepCounter = popupNavigation.querySelector('.current-step');
+                
+                // Bind event listeners
+                this.prevButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.navigate('prev');
+                });
+                this.nextButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.navigate('next');
+                });
+            }
+            
+            navigate(direction) {
+                let newIndex = this.currentIndex;
+                
+                if (direction === 'next' && this.currentIndex < this.totalSteps - 1) {
+                    newIndex = this.currentIndex + 1;
+                } else if (direction === 'prev' && this.currentIndex > 0) {
+                    newIndex = this.currentIndex - 1;
+                } else {
+                    return;
+                }
+                
+                // Update current index
+                this.currentIndex = newIndex;
+                
+                // Show fullscreen view
+                this.showStepFullscreen(newIndex);
+                
+                // Update navigation state
+                this.updateNavigationState();
+            }
+            
+            showStepFullscreen(index) {
+                const modal = document.getElementById('stepFullscreenModal');
+                const stepContent = this.steps[index].cloneNode(true);
+                
+                // Clear and update modal content
+                const modalContent = modal.querySelector('.step-content');
+                modalContent.innerHTML = '';
+                modalContent.appendChild(stepContent);
+                
+                // Show modal
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                
+                // Update step counter in modal
+                const modalCounter = modal.querySelector('.current-step');
+                if (modalCounter) {
+                    modalCounter.textContent = index + 1;
+                }
+            }
+            
+            updateNavigationState() {
+                // Update counter
+                this.stepCounter.textContent = this.currentIndex + 1;
+                
+                // Update button states
+                this.prevButton.disabled = this.currentIndex === 0;
+                this.nextButton.disabled = this.currentIndex === this.totalSteps - 1;
+                
+                // Update button opacity
+                this.prevButton.style.opacity = this.currentIndex === 0 ? '0.5' : '1';
+                this.nextButton.style.opacity = this.currentIndex === this.totalSteps - 1 ? '0.5' : '1';
+            }
+        }
+
+        // Initialize popup navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const popupNav = new PopupNavigation();
+            
+            // Close fullscreen modal when clicking outside or pressing escape
+            const modal = document.getElementById('stepFullscreenModal');
+            
+            window.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AppleSeed Repairs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Color Scheme */
+            --primary-dark: #1a1a1a;
+            --primary-light: #ffffff;
+            --accent-orange: #FFA500;
+            --accent-green: #90EE90;
+            --accent-blue: #00a9ff;
+            --accent-hover-orange: #FF8C00;
+            --accent-hover-green: #32CD32;
+            --accent-hover-blue: #0088cc;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Styles (copied from your existing pages) */
+        .nav-container {
+            position: fixed;
+            width: 100%;
+            z-index: 1001;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            top: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo Styles */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .logo .orange { color: var(--accent-orange); }
+        .logo .green { color: var(--accent-green); }
+        .logo .blue { color: var(--accent-blue); }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+            background: rgba(0, 169, 255, 0.1);
+        }
+
+        /* Contact Page Specific Styles */
+        .contact-header {
+            margin-top: 80px;
+            padding: 3rem 0;
+            text-align: center;
+            background: rgba(0, 169, 255, 0.05);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .contact-form {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .contact-method {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-method i {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .submit-btn {
+            background: var(--accent-blue);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-hover-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Map Section */
+        .map-section {
+            width: 100%;
+            height: 400px;
+            margin-top: 3rem;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="nav-container">
+        <nav class="navbar">
+            <a href="/" class="logo">
+                <span class="orange">Apple</span><span class="green">Seed</span> <span class="blue">Repairs</span>
+            </a>
+            <div class="nav-links">
+                <a href="https://sites.google.com/view/appleseed-repairs-services/">
+                    <i class="fas fa-tools"></i> Services
+                </a>
+                <a href="https://www.kaywat.me/">
+                    <i class="fas fa-info-circle"></i> About
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepairs-contact/home">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+                <a href="https://blog.fixmyapple.org/" target="_blank">
+                    <i class="fas fa-blog"></i> Blog
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepair-mail-in">
+                    <i class="fas fa-shipping-fast"></i> Send-in Repair
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Header -->
+    <section class="contact-header">
+        <h1>Contact Us</h1>
+        <p>We're here to help with all your device repair needs</p>
+    </section>
+
+    <!-- Contact Content -->
+    <div class="contact-container">
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <div class="contact-method">
+                <i class="fas fa-phone"></i>
+                <div>
+                    <h3>Phone</h3>
+                    <p>(470) 560-8107</p>
+                </div>
+            </div>
+            <div class="contact-method">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h3>Email</h3>
+                    <p>info@fixmyapple.org</p>
+                </div>
+            </div>
+            <div class="contact-method">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <h3>Hours</h3>
+                    <p>Monday - Saturday: 11am - 8pm</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-section">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.7152203640244!2d-84.2354899!3d34.2975977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5f68a228d3d89%3A0x8b0d8a8d4b1b8f0a!2sAppleSeed%20Repairs!5e0!3m2!1sen!2sus!4v1629308000000!5m2!1sen!2sus"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your message. We will get back to you soon!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

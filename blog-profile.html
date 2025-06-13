@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Profile - AppleSeed Repairs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #ffffff;
+            --accent-orange: #FFA500;
+            --accent-green: #90EE90;
+            --accent-blue: #1E90FF;
+            --accent-hover-blue: #1873CC;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 20px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-blue);
+        }
+
+        .profile-info h1 {
+            margin: 0;
+            color: var(--accent-blue);
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--accent-orange);
+        }
+
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .article-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .tag {
+            background: var(--accent-blue);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+
+        .nav-top {
+            background: var(--primary-dark);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            height: 35px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1002;
+        }
+
+        .nav-top-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 35px;
+        }
+
+        .nav-top-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-top-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-top-item {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-top-item:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-top-item.active {
+            color: var(--accent-orange);
+            font-weight: 500;
+        }
+
+        .nav-separator {
+            color: var(--text-secondary);
+            opacity: 0.5;
+            margin: 0 5px;
+        }
+
+        .nav-top-button {
+            background: transparent;
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 4px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-top-button:hover {
+            background: rgba(144, 238, 144, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .nav-container {
+            position: fixed;
+            width: 100%;
+            z-index: 1001;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            top: 35px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .profile-container {
+            margin-top: 135px;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .orange { color: var(--accent-orange); }
+        .green { color: var(--accent-green); }
+        .blue { color: var(--accent-blue); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:not(.send-in-repair):hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .send-in-repair {
+            background: var(--accent-blue);
+            color: white !important;
+        }
+
+        .send-in-repair:hover {
+            background: var(--accent-hover-blue);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-orange);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-top">
+        <div class="nav-top-container">
+            <div class="nav-top-row">
+                <div class="nav-top-left">
+                    <a href="https://www.fixmyapple.org" class="nav-top-item">Appleseed Repairs</a>
+                    <span class="nav-separator">|</span>
+                    <a href="https://www.fixmyapple.org" class="nav-top-item">FixMyApple</a>
+                    <span class="nav-separator">|</span>
+                    <a href="https://sites.google.com/view/appleseed-repairs-blog-dash/home" class="nav-top-item">BLOG</a>
+                </div>
+                <div class="nav-top-right">
+                    <a href="/referral-rewards" class="nav-top-button">
+                        <i class="fas fa-gift"></i> Referral Rewards
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="nav-container">
+        <nav class="navbar">
+            <a href="/" class="logo">
+                <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FHomepage%20-%20Cover%20Photos%2FAppleseed%20Repairs%20Logo.png?alt=media&token=26dff826-e940-4700-997b-e27145675d6c" 
+                     alt="AppleseedRepairs Logo"
+                     style="height: 55px; margin-right: 0px;">
+                <span class="orange">Apple</span><span class="green">Seed</span> <span class="blue">Repairs</span>
+            </a>
+            <div class="nav-links">
+                <a href="https://sites.google.com/view/appleseed-repairs-blog-dash/home">Dashboard</a>
+                <a href="https://sites.google.com/view/appleseed-repairs-blog-write/">Write</a>
+                <a href="https://sites.google.com/view/appleseed-repairs-dash-mgmt/home">Admin</a>
+                <a href="https://sites.google.com/view/appleseed-repairs-blog-profile/home" style="color: #FFA500;"><i class="fas fa-user"></i> Profile</a>
+                <a href="/send-in-repair" class="send-in-repair">
+                    <i class="fas fa-shipping-fast"></i> Send-in Repair
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FAppleseed_Repairs_Resized_for_GitHub.png?alt=media&token=0cf04292-69d7-4428-bcdf-b925ccf962e1"
+                 alt="Profile Photo"
+                 class="profile-image">
+            <div class="profile-info">
+                <h1>AppleSeed Repairs</h1>
+                <p>Professional device repair services and tech insights</p>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">42</div>
+                        <div class="stat-label">Articles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15k</div>
+                        <div class="stat-label">Readers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4.9</div>
+                        <div class="stat-label">Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="articles-container">
+            <!-- Example Article Card -->
+            <div class="article-card">
+                <h3>iPhone Screen Repair Guide</h3>
+                <p>Essential tips for DIY iPhone screen repairs and when to seek professional help...</p>
+                <div class="article-meta">
+                    <span class="tag">Repairs</span>
+                    <span>Jan 15, 2024</span>
+                </div>
+            </div>
+            <!-- More article cards -->
+        </div>
+    </div>
+
+    <script>
+        // Your existing scripts
+    </script>
+</body>
+</html> 

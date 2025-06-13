@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write Article - AppleSeed Repairs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #ffffff;
+            --accent-orange: #FFA500;
+            --accent-green: #90EE90;
+            --accent-blue: #1E90FF;
+            --accent-hover-blue: #1873CC;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+        }
+
+        /* Base styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            position: fixed;
+            width: 100%;
+            z-index: 1001;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            top: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .logo-apple { color: var(--accent-orange); }
+        .logo-seed { color: var(--accent-green); }
+        .logo-repairs { color: var(--accent-blue); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:not(.send-in-repair):hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .send-in-repair {
+            background: var(--accent-blue);
+            color: white !important;
+        }
+
+        .send-in-repair:hover {
+            background: var(--accent-hover-blue);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-dark);
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        /* Editor Container */
+        .editor-container {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 20px;
+        }
+
+        /* Article Settings */
+        .article-settings {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Editor Customization */
+        .ql-container {
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0 0 8px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ql-toolbar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px 8px 0 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover-blue);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Preview and Code Section */
+        .preview-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .preview-section, .code-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .preview-section {
+            min-height: 500px;
+        }
+
+        .code-section {
+            position: relative;
+        }
+
+        .code-section pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            color: var(--text-secondary);
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background: var(--accent-hover-blue);
+        }
+
+        .nav-top {
+            background: #1a1a1a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            height: 35px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1002;
+        }
+
+        .nav-top-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .nav-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 35px;
+        }
+
+        .nav-top-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-top-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-top-item {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-top-item:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-top-item.active {
+            color: var(--accent-orange);
+            font-weight: 500;
+        }
+
+        .nav-top-button {
+            background: transparent;
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 4px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-top-button:hover {
+            background: rgba(144, 238, 144, 0.1);
+            transform: translateY(-1px);
+        }
+
+        /* Update main navigation position to account for top nav */
+        .nav-container {
+            top: 35px; /* Push main nav below top nav */
+        }
+
+        /* Update editor container to account for both navs */
+        .editor-container {
+            margin-top: 135px; /* Adjusted to account for both nav bars */
+        }
+
+        .nav-separator {
+            color: var(--text-secondary);
+            opacity: 0.5;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add the top navigation bar -->
+    <nav class="nav-top">
+        <div class="nav-top-container">
+            <div class="nav-top-row">
+                <div class="nav-top-left">
+                    <a href="https://www.fixmyapple.org" class="nav-top-item">Appleseed Repairs</a>
+                    <span class="nav-separator">|</span>
+                    <a href="https://www.fixmyapple.org" class="nav-top-item">FixMyApple</a>
+                    <span class="nav-separator">|</span>
+                    <a href="https://sites.google.com/view/appleseed-repairs-blog-dash/home" class="nav-top-item">BLOG</a>
+                </div>
+                <div class="nav-top-right">
+                    <a href="/referral-rewards" class="nav-top-button">
+                        <i class="fas fa-gift"></i> Referral Rewards
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main navigation -->
+    <div class="nav-container">
+        <nav class="navbar">
+            <div style="display: flex; align-items: center;">
+                <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FHomepage%20-%20Cover%20Photos%2FAppleseed%20Repairs%20Logo.png?alt=media&token=26dff826-e940-4700-997b-e27145675d6c" 
+                     alt="AppleseedRepairs Logo"
+                     style="height: 55px; margin-right: 0px;">  <!-- Removed margin -->
+                <span style="font-size: 24px;">
+                    <span style="color: #FFA500;">Apple</span><span style="color: #228B22;">Seed</span> <span style="color: #1E90FF;">Repairs</span>
+                </span>
+            </div>
+            <div class="nav-links">
+                <a href="https://sites.google.com/view/appleseed-repairs-blog-dash/home">Dashboard</a>
+                <a href="https://sites.google.com/view/appleseed-repairs-blog-profile/home">Profile</a>
+                <a href="https://sites.google.com/view/appleseed-repairs-dash-mgmt/home">Admin</a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="editor-container">
+        <h1>Write New Article</h1>
+        
+        <div class="article-settings">
+            <div class="settings-grid">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" id="articleTitle" placeholder="Enter article title">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select class="form-control" id="articleCategory">
+                        <option value="repairs">Repairs</option>
+                        <option value="tips">Tips & Tricks</option>
+                        <option value="news">News</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Featured Image</label>
+                    <input type="file" class="form-control" id="articleImage" accept="image/*">
+                </div>
+            </div>
+        </div>
+
+        <!-- Quill Editor -->
+        <div id="editor"></div>
+
+        <div class="action-buttons">
+            <button class="btn btn-secondary" onclick="saveDraft()">Save Draft</button>
+            <button class="btn btn-primary" onclick="publishArticle()">Publish</button>
+        </div>
+
+        <div class="preview-container">
+            <div class="preview-section">
+                <h3>Live Preview</h3>
+                <div id="articlePreview"></div>
+            </div>
+            <div class="code-section">
+                <h3>Generated HTML</h3>
+                <button class="copy-button" onclick="copyHtml()">
+                    <i class="fas fa-copy"></i> Copy HTML
+                </button>
+                <pre><code id="generatedHtml"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        // Initialize Quill editor
+        var quill = new Quill('#editor', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, 3, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    ['blockquote', 'code-block'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'color': [] }, { 'background': [] }],
+                    ['link', 'image'],
+                    ['clean']
+                ]
+            }
+        });
+
+        function saveDraft() {
+            const content = quill.getContents();
+            const title = document.getElementById('articleTitle').value;
+            // Add save draft logic here
+            console.log('Saving draft:', { title, content });
+        }
+
+        function publishArticle() {
+            const content = quill.getContents();
+            const title = document.getElementById('articleTitle').value;
+            const category = document.getElementById('articleCategory').value;
+            // Add publish logic here
+            console.log('Publishing:', { title, category, content });
+        }
+
+        // Live preview and HTML generation
+        function updatePreview() {
+            const title = document.getElementById('articleTitle').value;
+            const content = quill.root.innerHTML;
+            const category = document.getElementById('articleCategory').value;
+            
+            // Update preview
+            const preview = document.getElementById('articlePreview');
+            preview.innerHTML = generateArticleHtml(title, content, category);
+
+            // Update generated HTML
+            const generatedHtml = document.getElementById('generatedHtml');
+            generatedHtml.textContent = generateArticleHtml(title, content, category);
+        }
+
+        function generateArticleHtml(title, content, category) {
+            const date = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${title} - AppleSeed Repairs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Your existing styles here -->
+</head>
+<body>
+    <article class="blog-article">
+        <h1>${title}</h1>
+        <div class="article-meta">
+            <span class="category">${category}</span>
+            <span class="date">${date}</span>
+        </div>
+        <div class="article-content">
+            ${content}
+        </div>
+    </article>
+</body>
+</html>`;
+        }
+
+        function copyHtml() {
+            const htmlCode = document.getElementById('generatedHtml').textContent;
+            navigator.clipboard.writeText(htmlCode).then(() => {
+                const copyBtn = document.querySelector('.copy-button');
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy HTML';
+                }, 2000);
+            });
+        }
+
+        // Event listeners for live updates
+        document.getElementById('articleTitle').addEventListener('input', updatePreview);
+        document.getElementById('articleCategory').addEventListener('change', updatePreview);
+        quill.on('text-change', updatePreview);
+    </script>
+</body>
+</html> 

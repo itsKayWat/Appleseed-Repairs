@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - AppleSeed Repairs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Color Scheme */
+            --primary-dark: #1a1a1a;
+            --primary-light: #ffffff;
+            --accent-orange: #FFA500;  /* Orange for "Seed" */
+            --accent-blue: #00a9ff;    /* Blue for "Repairs" */
+            --accent-hover-blue: #0088cc;
+            --text-secondary: #a1a1aa;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--primary-dark);
+            color: var(--primary-light);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Terms Content Styling */
+        .terms-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        .terms-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .terms-section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: var(--accent-blue);
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+        }
+
+        h3 {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            margin: var(--spacing-md) 0 var(--spacing-sm);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        li::before {
+            content: '•';
+            color: var(--accent-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        address {
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-sm);
+            border-radius: 4px;
+            margin: 1rem 0;
+            font-style: normal;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .terms-container {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Important Notice Styling */
+        .important-notice {
+            background: rgba(0, 169, 255, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            box-shadow: 0 0 20px rgba(0, 169, 255, 0.1);
+        }
+
+        .important-notice h4 {
+            color: var(--accent-blue);
+            margin-top: 0;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: var(--primary-dark);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-apple {
+            color: #FFA500; /* Orange */
+        }
+
+        .logo-seed {
+            color: #90EE90; /* Light green */
+        }
+
+        .logo-repairs {
+            color: #00a9ff; /* Blue */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .send-in-repair {
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-hover-blue));
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .send-in-repair:hover {
+            opacity: 0.9;
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-dark);
+                padding: var(--spacing-md);
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-apple">Apple</span><span class="logo-seed">Seed</span> <span class="logo-repairs">Repairs</span>
+            </a>
+            <div class="nav-links">
+                <a href="https://sites.google.com/view/appleseed-repairs-services/">
+                    <i class="fas fa-tools"></i> Services
+                </a>
+                <a href="https://www.kaywat.me/">
+                    <i class="fas fa-info-circle"></i> About
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepairs-contact/home">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+                <a href="https://blog.fixmyapple.org/" target="_blank">
+                    <i class="fas fa-blog"></i> Blog
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepair-mail-in">
+                    <i class="fas fa-shipping-fast"></i> Send-in Repair
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Terms Content -->
+    <div class="terms-container">
+        <h1>Terms and Conditions</h1>
+        
+        <div class="important-notice">
+            <h4>Important Notice</h4>
+            <p>By using our mail-in repair service, you acknowledge and agree to these terms and conditions. Please read them carefully before proceeding with any repair service.</p>
+        </div>
+
+        <section class="terms-section">
+            <h2>Diagnostic and Service Terms</h2>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>Diagnostic Fee Policy</h3>
+                    <ul>
+                        <li>Non-refundable diagnostic fee: $29.99</li>
+                        <li>Fee applies to all mail-in repairs</li>
+                        <li>Credited toward final repair cost if approved</li>
+                        <li>Due regardless of repair decision</li>
+                    </ul>
+                </div>
+
+                <div class="terms-card">
+                    <h3>Mail-In Process</h3>
+                    <ul>
+                        <li>Package device securely with padding</li>
+                        <li>Remove all accessories and personal items</li>
+                        <li>Back up and erase your device</li>
+                        <li>Include repair order confirmation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="terms-section">
+            <h2>Service Timeline & Shipping</h2>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>Repair Timeline</h3>
+                    <ul>
+                        <li>3-5 business days standard service time</li>
+                        <li>Email updates throughout process</li>
+                        <li>Additional time if parts needed</li>
+                        <li>Rush service available (additional fee)</li>
+                    </ul>
+                </div>
+
+                <div class="terms-card">
+                    <h3>Shipping Policy</h3>
+                    <ul>
+                        <li>Standard return shipping included</li>
+                        <li>Expedited options available</li>
+                        <li>Full shipping insurance included</li>
+                        <li>Tracking provided for all shipments</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="terms-section">
+            <h2>Shipping Liability & Package Responsibility</h2>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>Lost or Undelivered Packages</h3>
+                    <ul>
+                        <li>Once a package is in transit, the shipping carrier (USPS, UPS, or other chosen carrier) assumes full liability for the safe delivery of your device.</li>
+                        <li>In the event of a lost package, you must initiate a claim directly with the shipping carrier using your tracking number.</li>
+                        <li>We strongly recommend purchasing shipping insurance and using trackable shipping methods when sending your device.</li>
+                        <li>Keep your tracking number and shipping receipt until your device is confirmed received at our facility.</li>
+                    </ul>
+                </div>
+
+                <div class="terms-card">
+                    <h3>Misdelivered Packages</h3>
+                    <ul>
+                        <li>If your package shows as "delivered" but was delivered to an incorrect address, you must file a claim with the shipping carrier immediately.</li>
+                        <li>AppleSeed Repairs cannot be held responsible for packages that tracking shows were delivered to locations other than our facility.</li>
+                        <li>We recommend requiring a signature for delivery to ensure proper handling.</li>
+                    </ul>
+                </div>
+
+                <div class="important-notice">
+                    <h4>Important Shipping Guidelines</h4>
+                    <p>AppleSeed Repairs' liability begins only after your device has been physically received and logged into our system at our facility. Prior to confirmed receipt at our location, all shipping-related claims must be handled through your chosen shipping carrier's claims process.</p>
+                </div>
+
+                <div class="terms-card">
+                    <h3>Recommended Shipping Practices</h3>
+                    <ul>
+                        <li>Always obtain tracking and insurance for the full value of your device</li>
+                        <li>Take photos of your device and packaging before shipping</li>
+                        <li>Document your device's IMEI/Serial number</li>
+                        <li>Use sturdy packaging with adequate protection</li>
+                        <li>Verify our correct shipping address before sending</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="terms-section">
+            <h2>Data Protection & Liability</h2>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>Data Loss Disclaimer</h3>
+                    <ul>
+                        <li>AppleSeed Repairs is not responsible for any data loss that may occur during the repair process</li>
+                        <li>Data loss can occur during repairs due to system updates, necessary device resets, or hardware complications</li>
+                        <li>While data loss is uncommon, it is a potential risk in any repair scenario</li>
+                        <li>We strongly advise all customers to back up their data before sending devices for repair</li>
+                    </ul>
+                </div>
+
+                <div class="important-notice">
+                    <h4>Critical Data Backup Warning</h4>
+                    <p>Before sending your device for repair, please ensure that all important data including photos, messages, contacts, and documents are properly backed up. While we take utmost care during repairs, certain procedures may require system resets or updates that could result in data loss. AppleSeed Repairs cannot recover lost data and will not be held liable for any data loss during the repair process.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="terms-section">
+            <h2>Device Condition Documentation</h2>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>Check-in Documentation</h3>
+                    <ul>
+                        <li>All device conditions are documented with date and time stamps at check-in</li>
+                        <li>Check-in notes are considered final and binding regarding device condition</li>
+                        <li>Photos may be taken to document device condition</li>
+                        <li>Customers must review and acknowledge documented condition at check-in</li>
+                    </ul>
+                </div>
+
+                <div class="important-notice">
+                    <h4>Condition Acceptance Agreement</h4>
+                    <p>By signing the check-in documentation or proceeding with repair services without signing, you acknowledge and accept our assessment of your device's condition at check-in. This documented condition will serve as the official record and baseline for your device's state upon receipt. Proceeding with repair services, whether signed or unsigned, constitutes acceptance of our documented condition assessment and waives any liability for pre-existing damage or conditions.</p>
+                </div>
+
+                <div class="terms-card">
+                    <h3>Documentation Process</h3>
+                    <ul>
+                        <li>Detailed inspection notes are recorded in our system</li>
+                        <li>Cosmetic damage and functional issues are documented</li>
+                        <li>Time and date stamps are automatically applied to all records</li>
+                        <li>Documentation cannot be modified after check-in is complete</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="terms-section">
+            <h2>Repair Timeline & Parts Policy</h2>
+            <div class="terms-grid">
+                <div class="terms-card">
+                    <h3>Service Duration</h3>
+                    <ul>
+                        <li>All quoted repair and diagnostic times are estimates, not guarantees</li>
+                        <li>Actual repair duration may vary due to unforeseen technical issues</li>
+                        <li>Complex repairs may require additional diagnostic time</li>
+                        <li>You will be notified of any significant timeline changes</li>
+                    </ul>
+                </div>
+
+                <div class="terms-card">
+                    <h3>Parts Ordering & Delays</h3>
+                    <ul>
+                        <li>Additional parts may be required after initial diagnosis</li>
+                        <li>Repair timelines extend if replacement parts are needed</li>
+                        <li>Defective parts may require reordering, causing further delays</li>
+                        <li>Parts availability can impact final completion time</li>
+                    </ul>
+                </div>
+
+                <div class="important-notice">
+                    <h4>Parts Refund Policy</h4>
+                    <p>If you cancel a repair after parts have been ordered, refunds for part payments will be processed only after we receive our refund from the parts supplier. Since parts are ordered and paid for specifically for your repair, we must wait for supplier credit before issuing your refund. Once we receive the supplier credit, your refund will be processed within 5-7 business days. Please note that this timeline begins from the date we receive the supplier credit, not from the date of cancellation.</p>
+                </div>
+
+                <div class="terms-card">
+                    <h3>Communication</h3>
+                    <ul>
+                        <li>Regular status updates provided via email</li>
+                        <li>Immediate notification of significant delays</li>
+                        <li>Timeline revisions communicated promptly</li>
+                        <li>Customer approval required for additional parts/costs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add more sections as needed -->
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 

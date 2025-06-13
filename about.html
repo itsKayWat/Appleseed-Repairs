@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - AppleSeed Repairs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #ffffff;
+            --accent-orange: #FFA500;
+            --accent-green: #90EE90;
+            --accent-blue: #00a9ff;
+            --accent-hover-orange: #FF8C00;
+            --accent-hover-green: #32CD32;
+            --accent-hover-blue: #0088cc;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #2a2a2a 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navbar styles from Services.html */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo .orange { color: var(--accent-orange); }
+        .logo .green { color: var(--accent-green); }
+        .logo .blue { color: var(--accent-blue); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .cta-button {
+            background: var(--accent-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-hover-blue);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 26, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                border-bottom: 1px solid var(--glass-border);
+            }
+        }
+
+        /* Team Section Styles */
+        .team-section {
+            padding-top: 120px;
+            padding: 120px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            color: var(--text-secondary);
+        }
+
+        .team-intro h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background: linear-gradient(45deg, rgba(0, 169, 255, 0.1), rgba(144, 238, 144, 0.1));
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-info h3 {
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        .role {
+            display: block;
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .bio {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .specialties span {
+            background: rgba(0, 169, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 26, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                border-bottom: 1px solid var(--glass-border);
+            }
+        }
+
+        .member-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .member-links a {
+            text-decoration: none;
+            border: none;
+            outline: none;
+        }
+
+        .member-links a:hover {
+            box-shadow: 0 4px 15px rgba(0, 169, 255, 0.3);
+        }
+
+        .member-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .member-info > div:first-child {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .member-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .member-info .role {
+            display: block;
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+
+        .member-info .bio p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .member-info .bio p:last-child {
+            margin-bottom: 0;
+        }
+
+        .member-info a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .member-info a:hover {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="nav-container">
+        <nav class="navbar">
+            <a href="https://www.fixmyapple.org/" class="logo">
+                <span class="orange">Apple</span><span class="green">Seed</span> <span class="blue">Repairs</span>
+            </a>
+            <div class="nav-links">
+                <a href="https://sites.google.com/view/appleseed-repairs-services/">
+                    <i class="fas fa-tools"></i> Services
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepairs-bookrepair/home">
+                    <i class="fas fa-calendar-check"></i> Book Repair
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepairs-contact/home">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+                <a href="https://sites.google.com/view/appleseed-repairs-blog-dash/home">
+                    <i class="fas fa-blog"></i> Blog
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepair-mail-in/home" class="cta-button">
+                    <i class="fas fa-shipping-fast"></i> Send-in Repair
+                </a>
+            </div>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="team-section">
+        <div class="team-intro">
+            <h1>Meet Our Expert Technicians</h1>
+            <p>Our certified technicians bring years of experience and passion to every repair. While you can request a specific technician, availability may vary due to our commitment to quality service.</p>
+        </div>
+        
+        <div class="team-grid">
+            <!-- Owner & Founder -->
+            <div class="team-member">
+                <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FHomepage%20-%20Cover%20Photos%2Flinkedin%20-%20profile%20photo%20-%20chris%20loetz.png?alt=media&token=261eb60c-d065-441a-8a88-011b96bab765" 
+                     alt="Topher's profile photo"
+                     class="profile-photo">
+                <div class="member-info">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3>Topher (KayWat)</h3>
+                            <span class="role">Owner & Founder</span>
+                        </div>
+                        <a href="https://www.kaywat.me" target="_blank" 
+                           class="inline-flex items-center px-6 py-3 rounded-lg 
+                                  bg-gradient-to-r from-[#00a9ff] to-[#90EE90] 
+                                  hover:from-[#0088cc] hover:to-[#32CD32] 
+                                  text-white font-semibold transition-all duration-300 
+                                  transform hover:-translate-y-1 hover:shadow-lg 
+                                  border border-[rgba(255,255,255,0.1)]">
+                            <i class="fas fa-globe mr-2"></i>
+                            Visit Portfolio
+                        </a>
+                    </div>
+                    <div class="bio mt-4">
+                        <p>A passionate tech enthusiast from Atlanta, Georgia, Topher brings a diverse skill set to AppleSeed Repairs. With expertise in Python development, AI integration, and digital marketing, he designs and maintains the company's operational infrastructure.</p>
+                        
+                        <p class="mt-4">From custom POS systems and work order management to vendor relations and marketing strategies, he ensures the business runs efficiently at every level. His focus on systems architecture, workflow optimization, and brand development keeps AppleSeed Repairs at the cutting edge of the industry.</p>
+                    </div>
+                    <div class="specialties">
+                        <span>Systems Architecture</span>
+                        <span>Operations Management</span>
+                        <span>Brand Strategy</span>
+                        <span>Marketing Analytics</span>
+                        <span>Workflow Design</span>
+                        <span>Business Development</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Store Manager -->
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="/images/silhouette-2.png" alt="Store Manager">
+                </div>
+                <div class="member-info">
+                    <h3>Sarah</h3>
+                    <span class="role">Store Manager</span>
+                    <p class="bio">With exceptional organizational skills and customer service expertise, Sarah ensures smooth daily operations and maintains our high standards of service. She coordinates repairs and manages customer relations with precision and care.</p>
+                    <div class="specialties">
+                        <span>Operations Management</span>
+                        <span>Customer Service</span>
+                        <span>Team Leadership</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lead Technician -->
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="/images/silhouette-3.png" alt="Lead Technician">
+                </div>
+                <div class="member-info">
+                    <h3>Mike</h3>
+                    <span class="role">Lead Technician</span>
+                    <p class="bio">As our lead technician, Mike oversees all technical operations and ensures every repair meets our high-quality standards. His extensive experience covers the full range of Apple devices.</p>
+                    <div class="specialties">
+                        <span>Quality Control</span>
+                        <span>Technical Training</span>
+                        <span>Advanced Repairs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Senior iPhone Tech -->
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="/images/silhouette-4.png" alt="Senior iPhone Technician">
+                </div>
+                <div class="member-info">
+                    <h3>Alex</h3>
+                    <span class="role">Senior iPhone Technician</span>
+                    <p class="bio">With over 5 years of experience in iPhone repairs, Alex specializes in microsoldering and complex board-level repairs. Known for tackling the most challenging iPhone issues with precision and expertise.</p>
+                    <div class="specialties">
+                        <span>Microsoldering</span>
+                        <span>Data Recovery</span>
+                        <span>Logic Board Repair</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mac Specialist -->
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="/images/silhouette-5.png" alt="Mac Specialist">
+                </div>
+                <div class="member-info">
+                    <h3>Sam</h3>
+                    <span class="role">Mac Systems Expert</span>
+                    <p class="bio">Sam specializes in all things Mac, from MacBook repairs to iMac upgrades. With extensive knowledge of Apple's desktop and laptop systems, Sam ensures your Mac performs at its best.</p>
+                    <div class="specialties">
+                        <span>MacBook Repair</span>
+                        <span>iMac Service</span>
+                        <span>System Upgrades</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iPad Specialist -->
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="/images/silhouette-6.png" alt="iPad Specialist">
+                </div>
+                <div class="member-info">
+                    <h3>Jordan</h3>
+                    <span class="role">iPad & Tablet Specialist</span>
+                    <p class="bio">Jordan's expertise in tablet repairs makes them our go-to technician for iPad issues. Specializing in screen replacements and charging port repairs for all iPad models.</p>
+                    <div class="specialties">
+                        <span>iPad Repair</span>
+                        <span>Tablet Service</span>
+                        <span>Screen Replacement</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu functionality
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 

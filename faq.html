@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - AppleSeed Repairs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Enhanced Color Scheme */
+            --primary-dark: #1a1a1a;
+            --primary-darker: #0f0f0f;
+            --primary-light: #ffffff;
+            --accent-orange: #FFA500;
+            --accent-blue: #00a9ff;
+            --accent-hover-blue: #0088cc;
+            --accent-green: #90EE90;
+            --text-secondary: #a1a1aa;
+            --gradient-dark: linear-gradient(145deg, var(--primary-dark), var(--primary-darker));
+            --gradient-blue: linear-gradient(145deg, var(--accent-blue), var(--accent-hover-blue));
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            
+            /* Animation Timings */
+            --transition-fast: 0.2s;
+            --transition-medium: 0.3s;
+            --transition-slow: 0.5s;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.2);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.3);
+            --shadow-glow: 0 0 15px rgba(0, 169, 255, 0.3);
+        }
+
+        /* Enhanced Base Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--gradient-dark);
+            color: var(--primary-light);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Advanced Container Styles */
+        .faq-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg) var(--spacing-md);
+            position: relative;
+        }
+
+        /* Enhanced Section Styling */
+        .faq-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all var(--transition-medium) ease;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--accent-blue), 
+                transparent
+            );
+            opacity: 0;
+            transition: opacity var(--transition-medium);
+        }
+
+        .faq-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+        }
+
+        .faq-section:hover::before {
+            opacity: 1;
+        }
+
+        /* Enhanced Category Buttons */
+        .category-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--primary-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width var(--transition-medium), height var(--transition-medium);
+            z-index: -1;
+        }
+
+        .category-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .category-btn.active {
+            background: var(--gradient-blue);
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Enhanced FAQ Items */
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            color: var(--accent-orange);
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer {
+            background: rgba(0, 0, 0, 0.1);
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            color: #90EE90;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .toggle {
+            font-size: 1.5rem;
+            min-width: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Navigation Styles - Matching other pages */
+        .navbar {
+            background: var(--primary-dark);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-apple {
+            color: #FFA500; /* Orange */
+        }
+
+        .logo-seed {
+            color: #90EE90; /* Light green */
+        }
+
+        .logo-repairs {
+            color: #00a9ff; /* Blue */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .send-in-repair {
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-hover-blue));
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .send-in-repair:hover {
+            opacity: 0.9;
+        }
+
+        /* FAQ specific styles */
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-dark);
+                padding: var(--spacing-md);
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        /* Advanced Animation Classes */
+        .fade-in {
+            animation: fadeIn var(--transition-medium) ease-in;
+        }
+
+        .slide-in {
+            animation: slideIn var(--transition-medium) ease-out;
+        }
+
+        .bounce {
+            animation: bounce 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Enhanced Search Bar */
+        .search-container {
+            position: relative;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary-light);
+            font-size: 1rem;
+            transition: all var(--transition-medium);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent-blue);
+            width: 0;
+            transition: width var(--transition-medium);
+        }
+
+        /* Enhanced Mobile Styles */
+        @media (max-width: 768px) {
+            .faq-categories {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .category-btn {
+                font-size: 0.9rem;
+                padding: 0.6rem 1rem;
+                flex: 1 1 calc(50% - 0.5rem);
+            }
+
+            .faq-question {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <!-- Enhanced Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="https://www.fixmyapple.org/" target="_blank" class="logo">
+                <span class="logo-apple">Apple</span>
+                <span class="logo-seed">Seed</span>
+                <span class="logo-repairs">Repairs</span>
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-links">
+                <a href="https://sites.google.com/view/appleseed-repairs-services/">
+                    <i class="fas fa-tools"></i> Services
+                </a>
+                <a href="https://www.kaywat.me/">
+                    <i class="fas fa-info-circle"></i> About
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepairs-contact/home">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+                <a href="https://blog.fixmyapple.org/" target="_blank">
+                    <i class="fas fa-blog"></i> Blog
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepair-mail-in">
+                    <i class="fas fa-shipping-fast"></i> Send-in Repair
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="faq-container">
+        <section class="faq-section fade-in">
+            <h2>Frequently Asked Questions</h2>
+            
+            <!-- Enhanced Search -->
+            <div class="search-container slide-in">
+                <input type="text" 
+                       class="search-input" 
+                       placeholder="Search FAQ questions..."
+                       aria-label="Search frequently asked questions">
+            </div>
+
+            <!-- Enhanced Categories -->
+            <div class="faq-categories slide-in">
+                <button class="category-btn active">General</button>
+                <button class="category-btn">Mail-In Repairs</button>
+                <button class="category-btn">Water Damage</button>
+                <button class="category-btn">Screen Repairs</button>
+                <button class="category-btn">Pricing</button>
+                <button class="category-btn">Warranty</button>
+                <button class="category-btn">Device Types</button>
+                <button class="category-btn">Security</button>
+                <button class="category-btn">Diagnostics</button>
+                <button class="category-btn">Payment</button>
+            </div>
+
+            <!-- FAQ Content -->
+            <div class="faq-content">
+                <!-- Dynamically populated by JavaScript -->
+            </div>
+        </section>
+
+        <section class="terms-section">
+            <div class="important-notice">
+                <h4>Need Additional Help?</h4>
+                <p>Our support team is available to assist you with any questions not covered in our FAQ. 
+                Contact us at (470) 560-8107 or visit our store for personalized assistance.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Enhanced JavaScript with Advanced Features -->
+    <script>
+        const faqData = {
+            general: [
+                {
+                    question: "Do you offer repair bundles for multiple issues?",
+                    answer: "Yes, we offer repair bundles. Just call us at (470) 560-8107 or click here to get a FREE ESTIMATE."
+                },
+                {
+                    question: "I tried to fix my device on my own and have it semi unassembled. Can you finish the repair?",
+                    answer: "Absolutely, we do that all the time for customers. You can send it to us or bring it in for a free estimate before we complete your repair."
+                },
+                {
+                    question: "Do you repair obsolete phones?",
+                    answer: "Absolutely, just bring in your old phone for a free diagnostic. Our expert technicians will provide you with the best possible repair options."
+                },
+                {
+                    question: "Do you offer warranty on repairs?",
+                    answer: "Yes, all repairs carry a 180-day parts warranty which means in case of any manufacturing defects on the parts we install, we will replace it at no additional cost. This includes common repairs like battery replacement, screen repair, camera repair, etc. Our standard Terms and Conditions apply."
+                },
+                {
+                    question: "Can my phone be repaired while I wait?",
+                    answer: "Almost all repairs like screen replacement, battery replacement, back-glass repair etc. on Apple, Samsung and Google devices can be completed within 30 minutes while you wait. The only repairs that may take more time are water damage or motherboard repairs and some repairs that require ordering parts we don't have in stock."
+                },
+                {
+                    question: "Are the prices the same in all repair locations and online?",
+                    answer: "No, the prices found online may be slightly different than our local repair locations. Prices may vary from location to location due to logistics and sometimes limited parts availability."
+                },
+                {
+                    question: "Do I need to make an appointment?",
+                    answer: "An appointment is not needed. If you want to skip the queue, you can make an appointment by clicking here."
+                },
+                {
+                    question: "Are your parts Original Apple or OEM?",
+                    answer: "Apple Inc. does not manufacture any parts. They are only a design and engineering company. The parts Apple uses in their devices are bought from Chinese vendors and assembled in China. Many of the parts we use come from similar vendors in China. Though we cannot claim that our parts are 'from Apple' they are manufactured to the same strict OEM specifications."
+                },
+                {
+                    question: "Do you offer discounts for Students, Teachers, Military, and First responders?",
+                    answer: "Yes, we offer 10-20% discount for Students, Teachers, Active Duty Military, Veterans, Police Department, Fire Department, and all first responders with valid ID on phone repairs and accessories. This offer can't be combined with other promotions, and certain items are excluded."
+                }
+            ],
+            mailIn: [
+                {
+                    question: "Do you need my charger?",
+                    answer: "Yes, please send the charger with the device."
+                },
+                {
+                    question: "Do you need my passcode?",
+                    answer: "Yes, we do. If there is a passcode on the phone it hinders our ability to test all the functions of the device. Please provide your passcode when you send it in for repair. If you do not wish to provide your passcode, certain device functions including camera, Wi-Fi and Bluetooth cannot be tested and cannot be guaranteed. Also, your device repair will not be covered under our 180-day parts and labor warranty."
+                },
+                {
+                    question: "If I send my phone in, how do I know I'm going to get it back?",
+                    answer: "We are an established business committed to repairing devices, not taking them. When you send your device in for repair, you will receive updates as your phone is received, repaired, and returned back to you! If you have any questions, call us at (470) 560-8107 during normal business hours."
+                },
+                {
+                    question: "I am worried about my data being stolen when I send my device for repair. What should I do?",
+                    answer: "We do not store ANY of your private data. You may password protect your device while shipping it to us to protect your data. However, doing so will limit our ability to test certain parts of the phone to ensure they are working properly (i.e. camera, signal antenna, etc.) As a result, if you password protect the phone we are not responsible and cannot guarantee the ability of those features to work properly."
+                }
+            ],
+            waterDamage: [
+                {
+                    question: "Does the water damage service include water damage sensor/seal replacement?",
+                    answer: "No, the water damage service includes all parts and labor required to get the phone back to fully functional condition but does not include water damage sensor/seal replacement."
+                },
+                {
+                    question: "Does the water damage service include logic board replacement?",
+                    answer: "No, if the logic board has been irreversibly damaged, we will not be able to repair it and you will be refunded."
+                },
+                {
+                    question: "I dropped my phone in liquid that was not water, should I send it in?",
+                    answer: "Yes, you can send it in for a free diagnostic assessment."
+                },
+                {
+                    question: "I dropped my phone in salt water, is it worth sending it in?",
+                    answer: "Yes, please call our customer service at (470) 560-8107 to make the proper arrangements."
+                },
+                {
+                    question: "What should I do if my device falls in water or another liquid?",
+                    answer: "Do not attempt to turn the device on as that can cause a serious short circuit. Next send the device in for our water damage service."
+                },
+                {
+                    question: "Should I let my device dry out to see if it works before sending it in?",
+                    answer: "Though the device can sometimes begin working again on its own after water damage, it is very uncommon and not a likely outcome. It is more likely that corrosion and residue deposits will begin to form on the logic board making the repair process more difficult. We recommend sending the device in as soon as possible."
+                },
+                {
+                    question: "My device was water damaged and now everything works except one function. Do I still need the full service?",
+                    answer: "Yes. Though only one function may not be working, it could be caused by various things. For example, if your home button isn't functioning properly, the issue could be caused by the home button flex, the lower dock connector assembly, the logic board, or any combination since the phone was water damaged."
+                },
+                {
+                    question: "How long does water damage repair generally take?",
+                    answer: "Water damage repair generally takes between 5-7 business days to complete depending on the level of damage. This estimate can vary depending on the extent of the damage to the logic board and other components."
+                }
+            ],
+            screenRepairs: [
+                {
+                    question: "After dropping my phone it has become unresponsive to touch, does the glass repair fix this?",
+                    answer: "Yes, any non-responsiveness your phone is suffering due to a drop will be corrected with the Glass & Digitizer repair, as the digitizer is responsible for all touch functionality."
+                },
+                {
+                    question: "How do I know if I need to repair the LCD?",
+                    answer: "If the actual screen of the phone is bleeding, white, or has any dead pixels then you will need an LCD & Glass replacement service as the LCD has suffered irreversible damage. Still not sure? Send us a picture of your powered-on phone and we'll help diagnose it."
+                },
+                {
+                    question: "The glass on my phone is completely shattered and chipping off, is the glass replacement all I need?",
+                    answer: "Yes, the glass replacement service will replace the entire glass face, so the extent of the damage to the previous glass does not matter."
+                }
+            ],
+            pricing: [
+                {
+                    question: "Do you offer a lowest price guarantee?",
+                    answer: "Yes! With our lowest price guarantee, we ensure you get the best price across all repairs. Just bring in any local competitor's published price for the same repair, and we'll happily match and beat that price by $5."
+                },
+                {
+                    question: "How do I match AppleSeed Repairs' price to another retailer's price?",
+                    answer: "Just request the price match right at check-in. Please remember, once the work order is printed and signed, the price is not subject to change."
+                },
+                {
+                    question: "What are the limitations on price matching?",
+                    answer: "Price matching is only available for listed repair services from local retailers with brick and mortar stores within 5 miles. We don't match prices from: auctions, membership-required retailers, mobile repair providers, bundle offers, instant rebates, mail-in offers, Groupons, financing offers, clearance/closeout prices, or repairs using damaged/used components."
+                }
+            ],
+            deviceTypes: [
+                {
+                    question: "What types of devices do you repair?",
+                    answer: "We repair a wide range of devices including: iPhones, iPads, Samsung phones, Google devices, tablets, gaming consoles, drones, desktop computers, laptops, and smart watches."
+                },
+                {
+                    question: "Do you repair older model devices?",
+                    answer: "Yes, we work on both current and older models. Our expert technicians will assess your device and provide the best possible repair options."
+                },
+                {
+                    question: "Can you repair gaming consoles?",
+                    answer: "Yes, we repair various gaming consoles including PlayStation, Xbox, and Nintendo systems. Contact us for specific model repair information."
+                }
+            ],
+            security: [
+                {
+                    question: "How do you protect my data during repairs?",
+                    answer: "We take data security seriously and do not store ANY of your private data. While you can password protect your device during repair, this may limit our ability to test certain functions."
+                },
+                {
+                    question: "Do you sign any privacy agreements?",
+                    answer: "Yes, all our repair services are covered under our privacy policy and data protection agreement. We treat your personal information and device data with the utmost confidentiality."
+                },
+                {
+                    question: "What happens to my data during repair?",
+                    answer: "Your data remains on your device. We recommend backing up your data before any repair. We only access device functions necessary for testing repairs."
+                }
+            ],
+            diagnostics: [
+                {
+                    question: "Do you charge for diagnostic services?",
+                    answer: "No, we offer free diagnostic services to accurately assess your device's issues and provide the best repair options."
+                },
+                {
+                    question: "How long does a diagnostic take?",
+                    answer: "Most basic diagnostics can be completed within 30 minutes. Complex issues may require additional time for thorough testing."
+                },
+                {
+                    question: "What does the diagnostic process include?",
+                    answer: "Our diagnostic process includes: physical inspection, functional testing of all components, software analysis if needed, and a detailed report of findings with repair recommendations."
+                }
+            ],
+            payment: [
+                {
+                    question: "What payment methods do you accept?",
+                    answer: "We accept all major credit cards, cash, and digital payment methods. For specific payment arrangements, please contact us."
+                },
+                {
+                    question: "Do you offer financing options?",
+                    answer: "Yes, we offer various financing options to help make repairs more affordable. Contact us to discuss available payment plans."
+                },
+                {
+                    question: "Can I pay after the repair is completed?",
+                    answer: "Payment is required before we release the repaired device. We can provide an estimate beforehand so you know the exact cost."
+                }
+            ],
+            warranty: [
+                {
+                    question: "What does your warranty cover?",
+                    answer: "Our 180-day parts warranty covers manufacturing defects in the parts we install, including common repairs like battery replacement, screen repair, and camera repair. Standard Terms and Conditions apply."
+                },
+                {
+                    question: "What voids the warranty?",
+                    answer: "The warranty is voided by: unauthorized repairs or modifications, physical damage after repair, removal of warranty seals, or tampering with repaired components."
+                },
+                {
+                    question: "How do I make a warranty claim?",
+                    answer: "Contact us immediately if you experience issues with our repair. Provide your original repair order number and a description of the problem. We'll schedule a warranty service evaluation."
+                },
+                {
+                    question: "Is water damage covered under warranty?",
+                    answer: "No, water damage repairs are not covered under our standard warranty due to the unpredictable nature of water damage."
+                }
+            ]
+        };
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // FAQ functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqContent = document.querySelector('.faq-content');
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const searchInput = document.querySelector('.search-input');
+            const progressBar = document.querySelector('.progress-bar');
+
+            // Progress bar update
+            window.addEventListener('scroll', () => {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.scrollY / windowHeight) * 100;
+                progressBar.style.width = `${scrolled}%`;
+            });
+
+            // Enhanced search functionality
+            let timeoutId;
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    const searchTerm = e.target.value.toLowerCase();
+                    searchFAQs(searchTerm);
+                }, 300);
+            });
+
+            function searchFAQs(term) {
+                const allQuestions = [];
+                Object.values(faqData).forEach(category => {
+                    category.forEach(item => {
+                        if (item.question.toLowerCase().includes(term) || 
+                            item.answer.toLowerCase().includes(term)) {
+                            allQuestions.push(item);
+                        }
+                    });
+                });
+                displaySearchResults(allQuestions);
+            }
+
+            function displaySearchResults(results) {
+                faqContent.innerHTML = '';
+                results.forEach(faq => {
+                    const faqItem = createFAQElement(faq);
+                    faqContent.appendChild(faqItem);
+                });
+                initializeFAQListeners();
+            }
+
+            function createFAQElement(faq) {
+                const faqItem = document.createElement('div');
+                faqItem.className = 'faq-item';
+                faqItem.innerHTML = `
+                    <div class="faq-question">
+                        ${faq.question}
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>${faq.answer}</p>
+                    </div>
+                `;
+
+                // Add click handler directly to the element
+                const question = faqItem.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const wasActive = faqItem.classList.contains('active');
+                    
+                    // Close all other items
+                    document.querySelectorAll('.faq-item.active').forEach(activeItem => {
+                        activeItem.classList.remove('active');
+                    });
+                    
+                    // Toggle clicked item
+                    if (!wasActive) {
+                        faqItem.classList.add('active');
+                    }
+                });
+
+                return faqItem;
+            }
+
+            function initializeFAQListeners() {
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.querySelector('.faq-question').addEventListener('click', () => {
+                        const wasActive = item.classList.contains('active');
+                        
+                        // Close all other items
+                        document.querySelectorAll('.faq-item.active').forEach(activeItem => {
+                            activeItem.classList.remove('active');
+                        });
+                        
+                        // Toggle clicked item
+                        if (!wasActive) {
+                            item.classList.add('active');
+                        }
+                    });
+                });
+            }
+
+            // Category switching with enhanced animations
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active', 'bounce');
+                    
+                    const category = button.textContent.toLowerCase().replace(/\s+/g, '');
+                    displayFAQs(category);
+                });
+            });
+
+            // Display FAQs with animations
+            function displayFAQs(category) {
+                const faqContent = document.querySelector('.faq-content');
+                faqContent.innerHTML = '';
+                const faqs = faqData[category];
+                
+                faqs.forEach(faq => {
+                    const faqItem = createFAQElement(faq);
+                    faqContent.appendChild(faqItem);
+                });
+            }
+
+            // Initialize with general FAQs
+            displayFAQs('general');
+        });
+    </script>
+</body>
+</html>

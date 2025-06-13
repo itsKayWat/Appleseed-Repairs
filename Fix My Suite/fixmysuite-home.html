@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixMySystem - Premium System Diagnostic & Repair Tools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-size: 1.6rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .navbar-brand i {
+            margin-right: 10px;
+        }
+        
+        .brand-fix {
+            color: #FF6B00; /* Orange */
+        }
+        
+        .brand-my {
+            color: #00B894; /* Green */
+        }
+        
+        .brand-platform {
+            color: #3498db; /* Blue */
+        }
+        
+        .navbar .btn {
+            background: #222;
+            border: 1px solid #444;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 4px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .navbar .btn:hover {
+            background: #FF6B00;
+            border-color: #FF6B00;
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.4);
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+            background: linear-gradient(to bottom, #151515, #0a0a0a);
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero span.brand-fix {
+            color: #FF6B00; /* Orange */
+        }
+        
+        .hero span.brand-my {
+            color: #00B894; /* Green */
+        }
+        
+        .hero span.brand-platform {
+            color: #3498db; /* Blue */
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 70px;
+        }
+        
+        .tool-card {
+            background: #151515;
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+            transition: all 0.3s;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 15px rgba(255, 107, 0, 0.2);
+            border-color: #444;
+        }
+        
+        .tool-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+        
+        .tool-card.windows::before {
+            background: linear-gradient(90deg, #3498db, #7DC8FF); /* Blue */
+        }
+        
+        .tool-card.apple::before {
+            background: linear-gradient(90deg, #9b59b6, #D6A8FF); /* Purple */
+        }
+        
+        .tool-card.android::before {
+            background: linear-gradient(90deg, #00B894, #63E2B7); /* Green */
+        }
+        
+        .tool-card.data::before {
+            background: linear-gradient(90deg, #e74c3c, #FF9F9F); /* Red */
+        }
+        
+        .tool-card.mac::before {
+            background: linear-gradient(90deg, #f39c12, #FFD78C); /* Yellow */
+        }
+        
+        .tool-card.efi::before {
+            background: linear-gradient(90deg, #2ecc71, #A1FFCB); /* Light Green */
+        }
+        
+        .tool-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px rgba(255, 107, 0, 0.4);
+        }
+        
+        .tool-card.windows .tool-icon {
+            color: #3498db; /* Blue */
+        }
+        
+        .tool-card.apple .tool-icon {
+            color: #9b59b6; /* Purple */
+        }
+        
+        .tool-card.android .tool-icon {
+            color: #00B894; /* Green */
+        }
+        
+        .tool-card.data .tool-icon {
+            color: #e74c3c; /* Red */
+        }
+        
+        .tool-card.mac .tool-icon {
+            color: #f39c12; /* Yellow */
+        }
+        
+        .tool-card.efi .tool-icon {
+            color: #2ecc71; /* Light Green */
+        }
+        
+        .tool-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .tool-description {
+            margin-bottom: 25px;
+            color: #bbb;
+            font-size: 1.05rem;
+            height: 80px;
+        }
+        
+        .download-button {
+            background: #FF6B00;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+        }
+        
+        .download-button:hover {
+            background: #e55e00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 107, 0, 0.5);
+        }
+        
+        .download-button i {
+            margin-right: 8px;
+        }
+        
+        .requirements {
+            margin-top: 30px;
+            background: #101010;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            border-left: 3px solid #FF6B00;
+        }
+        
+        .requirements h4 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+        
+        .requirements ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+            color: #bbb;
+        }
+        
+        .features {
+            margin-bottom: 70px;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #fff;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .features h2:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #FF6B00;
+            border-radius: 2px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .feature-item {
+            background: #111;
+            border-radius: 10px;
+            padding: 25px;
+            display: flex;
+            align-items: flex-start;
+            border: 1px solid #222;
+            transition: all 0.3s;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-color: #333;
+        }
+        
+        .feature-icon {
+            font-size: 1.8rem;
+            color: #FF6B00;
+            margin-right: 20px;
+            padding-top: 5px;
+        }
+        
+        .feature-content h3 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .feature-content p {
+            margin: 0;
+            color: #bbb;
+        }
+        
+        .support-section {
+            background: #151515;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #333;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+        }
+        
+        .support-section h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+        
+        .support-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .support-button {
+            background: #FF6B00;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .support-button:hover {
+            background: #e55e00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 107, 0, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tools-grid {
+                gap: 20px;
+            }
+            
+            .tool-card {
+                padding: 25px;
+            }
+            
+            .support-section {
+                padding: 30px 20px;
+            }
+            
+            .feature-grid {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a href="#" class="navbar-brand">
+                <i class="fas fa-tools"></i>
+                <span class="brand-fix">Fix</span><span class="brand-my">My</span><span class="brand-platform">System</span>
+            </a>
+            <div>
+                <a href="#support" class="btn">Support</a>
+                <a href="#about" class="btn">About Us</a>
+            </div>
+        </div>
+
+        <div class="hero">
+            <h1>Premium System Diagnostic & Repair Tools</h1>
+            <p>Our comprehensive suite of tools helps you diagnose and fix issues with your devices, from Windows PCs to Macs and Android phones.</p>
+        </div>
+
+        <div class="tools-grid">
+            <div class="tool-card windows">
+                <div class="tool-icon">
+                    <i class="fab fa-windows"></i>
+                </div>
+                <h3 class="tool-title">FixMyWindows</h3>
+                <p class="tool-description">Advanced diagnostics and repair tool for Windows systems. Fix common issues, optimize performance, and enhance security.</p>
+                <a href="https://sites.google.com/view/fixmysystem/home/download" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download
+                </a>
+                <div class="requirements">
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>Windows 10/11</li>
+                        <li>4GB RAM minimum</li>
+                        <li>500MB free disk space</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tool-card apple">
+                <div class="tool-icon">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <h3 class="tool-title">FixMyApple</h3>
+                <p class="tool-description">Complete diagnostic and repair suite for iPhones and iPads. Fix iOS issues, recover data, and optimize device performance.</p>
+                <a href="https://sites.google.com/view/fixmysystem/home/download" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download
+                </a>
+                <div class="requirements">
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>Windows 10/11 or macOS 10.15+</li>
+                        <li>4GB RAM minimum</li>
+                        <li>Lightning cable</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tool-card android">
+                <div class="tool-icon">
+                    <i class="fab fa-android"></i>
+                </div>
+                <h3 class="tool-title">FixMyAndroid</h3>
+                <p class="tool-description">All-in-one solution for Android device issues. Repair system problems, recover lost data, and enhance performance.</p>
+                <a href="https://fixmyandroid.com/download" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download
+                </a>
+                <div class="requirements">
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>Windows 10/11 or macOS 10.15+</li>
+                        <li>4GB RAM minimum</li>
+                        <li>USB cable</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tool-card data">
+                <div class="tool-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3 class="tool-title">FixMyData</h3>
+                <p class="tool-description">Data recovery and repair tool for all devices. Recover deleted files, repair corrupted data, and secure your information.</p>
+                <a href="https://fixmydata.com/download" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download
+                </a>
+                <div class="requirements">
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>Windows 10/11 or macOS 10.15+</li>
+                        <li>8GB RAM recommended</li>
+                        <li>Device connection cables</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tool-card mac">
+                <div class="tool-icon">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <h3 class="tool-title">FixMyMac</h3>
+                <p class="tool-description">Comprehensive repair and optimization suite for macOS. Fix system issues, clean junk files, and maximize performance.</p>
+                <a href="https://fixmymac.com/download" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download
+                </a>
+                <div class="requirements">
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>macOS 10.15 or higher</li>
+                        <li>4GB RAM minimum</li>
+                        <li>1GB free disk space</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tool-card efi">
+                <div class="tool-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3 class="tool-title">Mac EFI Firmware Unlocker</h3>
+                <p class="tool-description">Specialized tool for unlocking EFI firmware on Mac systems. Enables advanced diagnostics and hardware modifications.</p>
+                <a href="https://macefiunlocker.com/download" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download
+                </a>
+                <div class="requirements">
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>macOS 10.13 or higher</li>
+                        <li>Intel-based Mac</li>
+                        <li>Administrator privileges</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <h2>Key Features Across Our Tools</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Comprehensive Diagnostics</h3>
+                        <p>Detailed analysis of hardware and software to pinpoint exactly what's causing issues</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Automated Repairs</h3>
+                        <p>One-click fixes for common problems with intelligent repair algorithms</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Performance Optimization</h3>
+                        <p>Advanced tools to clean, optimize, and speed up your devices</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Security Enhancements</h3>
+                        <p>Protection against malware, privacy intrusions, and unauthorized access</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Data Recovery</h3>
+                        <p>Powerful tools to recover deleted or lost files from various storage media</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>User-Friendly Interface</h3>
+                        <p>Intuitive design that makes complex diagnostic tasks simple for all users</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="support-section" id="support">
+            <h2>Premium Support Options</h2>
+            <p>Get faster, prioritized support and assistance with our premium support packages.</p>
+            <div class="support-options">
+                <a href="#" class="support-button">Standard Support</a>
+                <a href="#" class="support-button">Premium Support</a>
+                <a href="#" class="support-button">Business Solutions</a>
+            </div>
+            <p style="margin-top: 20px;">Our technical team is ready to assist you with any issues or questions!</p>
+        </div>
+    </div>
+</body>
+</html>

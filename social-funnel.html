@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppleSeed Repairs - Social Hub</title>
+    <meta property="og:title" content="Connect with AppleSeed Repairs">
+    <meta property="og:description" content="Follow us for repair tips, tech news, and more">
+    <meta property="og:image" content="/images/Facebook_Cover_Art.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    
+    <style>
+        :root {
+            --primary-color: #8B4513;     /* Dark brown */
+            --secondary-color: #DEB887;   /* Light wood */
+            --accent-color: #CD853F;      /* Peru brown */
+            --text-color: #332211;        /* Dark brown text */
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: 
+                linear-gradient(
+                    rgba(0, 0, 0, 0.7),  /* Darkening overlay */
+                    rgba(0, 0, 0, 0.7)
+                ),
+                url('https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2F470575816_914331930827956_6197303926887271017_n.jpg?alt=media&token=e6f05f35-4d0b-43d6-8533-9e1d4b07b3b5');
+            background-size: cover;
+            background-attachment: fixed;
+            background-color: #8B4513;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .profile-container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .profile-header {
+            background: var(--glass-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: white;
+            padding: 2px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .profile-info {
+            text-align: left;
+        }
+
+        .profile-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-slogan {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-bio {
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        .section-title {
+            background: var(--primary-color);
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title i {
+            color: var(--secondary-color);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .social-card {
+            background: var(--glass-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-card i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-card p {
+            color: var(--text-color);
+            font-size: 0.85rem;
+        }
+
+        .action-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary-color);
+        }
+
+        .action-button:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .link-card {
+            background: var(--glass-bg);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .link-content h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: var(--primary-color);
+        }
+
+        .link-content p {
+            color: var(--text-color);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FAppleseed_Repairs_Resized_for_GitHub.png?alt=media&token=0cf04292-69d7-4428-bcdf-b925ccf962e1" alt="AppleSeed Repairs" class="profile-image">
+            <div class="profile-info">
+                <h1 class="profile-title">AppleSeed Repairs</h1>
+                <p class="profile-slogan">Getting to the root of your problems</p>
+                <p class="profile-bio">At AppleSeed Repair we repair Apple iOS devices at a low-cost in a ESD safe environment and we aim to provide excellent customer service in the process.</p>
+            </div>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://instagram.com/appleseedrepairs"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/fixmyapple_x"><i class="fab fa-twitter"></i></a>
+            <a href="https://youtube.com/@fixmyios"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <div class="section-title">
+            <i class="fas fa-share-nodes"></i>
+            Connect With Us
+        </div>
+
+        <div class="card-grid">
+            <a href="https://facebook.com/AppleSeedRepairs" class="social-card">
+                <i class="fab fa-facebook" style="color: #1877F2;"></i>
+                <h3>Facebook Community</h3>
+                <p>Join our community for updates and special offers!</p>
+                <span class="action-button">Follow</span>
+            </a>
+
+            <a href="https://instagram.com/fixmyapple_ig" class="social-card">
+                <i class="fab fa-instagram" style="color: #E4405F;"></i>
+                <h3>Repair Showcase</h3>
+                <p>See our latest repairs and behind-the-scenes content!</p>
+                <span class="action-button">Follow</span>
+            </a>
+
+            <a href="https://youtube.com/@FixMyApple_YT" class="social-card">
+                <i class="fab fa-youtube" style="color: #FF0000;"></i>
+                <h3>Watch Our Repairs</h3>
+                <p>Device repair tutorials, tech tips, and behind-the-scenes content!</p>
+                <span class="action-button">Subscribe</span>
+            </a>
+
+            <a href="https://x.com/FixMyApple_X" class="social-card">
+                <i class="fab fa-twitter" style="color: #1DA1F2;"></i>
+                <h3>Latest Tech News</h3>
+                <p>Stay updated with repair tips and tech industry news!</p>
+                <span class="action-button">Follow</span>
+            </a>
+        </div>
+
+        <div class="section-title" style="margin-top: 2rem;">
+            <i class="fas fa-link"></i>
+            Quick Links
+        </div>
+
+        <a href="https://www.fixmyapple.org/" class="link-card">
+            <div class="link-content">
+                <h3>Homepage</h3>
+                <p>Visit our main website</p>
+            </div>
+            <span class="action-button">Visit</span>
+        </a>
+
+        <a href="https://www.fixmyapple.org/" class="link-card">
+            <div class="link-content">
+                <h3>Schedule a Repair</h3>
+                <p>Book your device repair appointment today</p>
+            </div>
+            <span class="action-button">Book Now</span>
+        </a>
+
+        <a href="https://sites.google.com/view/appleseed-repairs-services/home" class="link-card">
+            <div class="link-content">
+                <h3>Our Services</h3>
+                <p>View our repair services and pricing</p>
+            </div>
+            <span class="action-button">View</span>
+        </a>
+
+        <a href="https://sites.google.com/view/hey-im-kaywat/hello" class="link-card">
+            <div class="link-content">
+                <h3>About Us</h3>
+                <p>Learn more about our expert repair team</p>
+            </div>
+            <span class="action-button">Learn More</span>
+        </a>
+    </div>
+</body>
+</html>

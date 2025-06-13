@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppleSeed Repairs - Professional Device Repair Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* Color Scheme */
+            --primary-dark: #1a1a1a;
+            --primary-light: #ffffff;
+            --accent-orange: #FFA500;  /* Orange for "On" */
+            --accent-green: #90EE90;   /* Light green for "Point" */
+            --accent-blue: #00a9ff;    /* Original blue for "Repairs" */
+            --accent-hover-orange: #FF8C00;  /* Darker orange for hover */
+            --accent-hover-green: #32CD32;   /* Darker green for hover */
+            --accent-hover-blue: #0088cc;    /* Original darker blue for hover */
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            position: fixed;
+            width: 100%;
+            z-index: 1001;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            top: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo span.orange {
+            color: var(--accent-orange);
+        }
+
+        .logo span.green {
+            color: var(--accent-green);
+        }
+
+        .logo span.blue {
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+            background: rgba(0, 169, 255, 0.1);
+        }
+
+        .cta-button {
+            background: var(--accent-blue);
+            color: var(--primary-light);
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid transparent;
+            box-shadow: 
+                0 4px 15px rgba(0, 169, 255, 0.3),
+                inset 0 1px rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-hover-blue);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 20px rgba(0, 169, 255, 0.4),
+                inset 0 1px rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(0, 169, 255, 0.3);
+        }
+
+        /* For the navigation CTA specifically */
+        .nav-links .cta-button {
+            background: var(--accent-blue);
+            color: var(--primary-light);
+            padding: 0.6rem 1.4rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 
+                0 2px 10px rgba(0, 169, 255, 0.2),
+                inset 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links .cta-button:hover {
+            background: var(--accent-hover-blue);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 4px 15px rgba(0, 169, 255, 0.3),
+                inset 0 1px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-dark);
+                padding: 1rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                        url('https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FHomepage%20-%20Cover%20Photos%2FHomepage%20-%20Cover%20Photo.png?alt=media&token=918218e3-7b4b-4f59-a223-f38c19f57164') center/cover;
+            margin-top: 105px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-md);
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.8),
+                -2px -2px 4px rgba(0, 0, 0, 0.8),
+                2px -2px 4px rgba(0, 0, 0, 0.8),
+                -2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: var(--primary-light);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+            text-shadow: 
+                1px 1px 2px rgba(0, 0, 0, 0.8),
+                -1px -1px 2px rgba(0, 0, 0, 0.8);
+            font-weight: 500;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: var(--accent-blue);
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 4px 15px rgba(0, 169, 255, 0.1);
+        }
+
+        .secondary-button:hover {
+            background: rgba(0, 169, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 169, 255, 0.2);
+        }
+
+        .secondary-button:active {
+            transform: translateY(1px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: var(--spacing-lg);
+            background: var(--primary-dark);
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            padding: var(--spacing-lg) 0 var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            padding: 0 var(--spacing-md);
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .footer-section h4 {
+            color: var(--accent-blue);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .footer-content {
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .cta-button, .secondary-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Container utility class */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-us {
+            padding: var(--spacing-lg) 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .why-choose-us h2 {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .feature-card {
+            padding: var(--spacing-md);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: var(--spacing-lg) 0;
+            background: var(--primary-dark);
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .testimonials-slider {
+            display: flex;
+            gap: var(--spacing-md);
+            overflow-x: auto;
+            padding: var(--spacing-md) 0;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .testimonials-slider::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Edge */
+        }
+
+        .testimonial-card {
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            flex: 0 0 auto;
+        }
+
+        .rating {
+            color: #ffd700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .customer-info {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+
+        .customer-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: linear-gradient(90deg, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+            animation: shimmer 1.5s infinite;
+            position: relative;
+        }
+
+        .customer-info img.loading::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .customer-info span {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: var(--spacing-lg) 0;
+            background: linear-gradient(rgba(0, 169, 255, 0.1), rgba(0, 169, 255, 0.05));
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .features-grid {
+                gap: var(--spacing-sm);
+            }
+            
+            .testimonial-card {
+                min-width: 280px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--spacing-sm);
+            }
+        }
+
+        /* Make the Book Repair button stand out more */
+        .hero-buttons .cta-button {
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Enhanced Testimonials Styles */
+        .testimonials-slider {
+            cursor: grab;
+            user-select: none;
+            scroll-behavior: smooth;
+        }
+
+        .testimonials-slider.active {
+            cursor: grabbing;
+            cursor: -webkit-grabbing;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .rating {
+            color: #ffd700;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        /* Slider Navigation Dots */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent-blue);
+        }
+
+        /* Slider Navigation Styles */
+        .slider-navigation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .slider-arrow {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .slider-arrow:hover {
+            background: var(--accent-blue);
+            color: var(--primary-light);
+        }
+
+        .slider-arrow:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Enhanced testimonial card styles */
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+            min-width: 300px;
+            max-width: 400px;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Filter Buttons */
+        .testimonials-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-button {
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filter-button:hover,
+        .filter-button.active {
+            background: var(--accent-blue);
+            color: var(--primary-light);
+        }
+
+        /* Enhanced Animations */
+        .testimonial-card {
+            animation: fadeIn 0.5s ease-out;
+            transition: all 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Card Hover Effects */
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                transparent 100%
+            );
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .testimonial-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* Loading Animation */
+        .loading-animation {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-animation::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 100%
+            );
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .testimonials-filter {
+                padding: 0 1rem;
+            }
+            
+            .filter-button {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .testimonial-card {
+                min-width: 280px;
+            }
+        }
+
+        /* Smooth Scrolling */
+        .testimonials-slider {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Card Transform Effect */
+        .testimonial-card {
+            perspective: 1000px;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px) rotateX(5deg);
+        }
+
+        /* Rating Stars Animation */
+        .rating {
+            display: inline-block;
+        }
+
+        .rating i {
+            opacity: 0;
+            animation: starFade 0.5s ease forwards;
+        }
+
+        .rating i:nth-child(1) { animation-delay: 0.1s; }
+        .rating i:nth-child(2) { animation-delay: 0.2s; }
+        .rating i:nth-child(3) { animation-delay: 0.3s; }
+        .rating i:nth-child(4) { animation-delay: 0.4s; }
+        .rating i:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes starFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .secondary-nav {
+            background: var(--primary-dark);
+            height: 32px;
+            width: 100%;
+            position: fixed;
+            top: 73px;
+            left: 0;
+            z-index: 1000;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .secondary-nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            height: 100%;
+        }
+
+        .secondary-nav-links {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            margin: 0;
+            padding: 0 0 3px 0;
+            list-style: none;
+            height: 100%;
+        }
+
+        .nav-separator {
+            color: rgba(255, 255, 255, 0.2);
+            padding: 0 0.5rem;
+            margin-bottom: 3px;
+        }
+
+        .secondary-nav-links > li {
+            position: relative;
+            height: auto;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .secondary-nav-links > li > a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0 12px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            line-height: 1;
+        }
+
+        /* Enhanced Dropdown Styles */
+        .secondary-nav .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--primary-dark);
+            min-width: 200px;
+            padding: 8px 0;
+            margin-top: 1px;
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .secondary-nav .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .secondary-nav .dropdown-menu li {
+            list-style: none;
+        }
+
+        .secondary-nav .dropdown-menu a {
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            display: block;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .secondary-nav .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-blue);
+            padding-left: 20px;
+        }
+
+        /* Dropdown Toggle Indicator */
+        .dropdown-toggle::after {
+            content: '▾';
+            margin-left: 6px;
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+
+        .dropdown:hover .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        /* Search Container Styles */
+        .search-container {
+            position: relative;
+            margin-left: 1rem;
+        }
+
+        .search-btn {
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0 12px;
+            transition: color 0.2s ease;
+        }
+
+        .search-btn:hover {
+            color: var(--accent-blue);
+        }
+
+        .search-open {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 1px;
+            background: var(--primary-dark);
+            padding: 1rem;
+            border-radius: 4px;
+            width: 300px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-open.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .search-open .input-group {
+            display: flex;
+            gap: 4px;
+        }
+
+        .search-open input {
+            flex: 1;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .search-open input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-open button {
+            padding: 8px 12px;
+            background: var(--accent-blue);
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .search-open button:hover {
+            background: var(--accent-hover-blue);
+        }
+
+        /* Enhanced Dropdown Styles for Send-In Repair */
+        .secondary-nav .dropdown-menu {
+            background: var(--primary-dark);
+            min-width: 240px; /* Wider to accommodate longer text */
+        }
+
+        .secondary-nav .dropdown-divider {
+            height: 1px;
+            margin: 8px 0;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .secondary-nav .dropdown-menu a {
+            color: var(--text-secondary);
+            padding: 10px 16px;
+            display: block;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            line-height: 1.2;
+        }
+
+        .secondary-nav .dropdown-menu a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-blue);
+            padding-left: 20px;
+        }
+
+        /* Highlight primary actions */
+        .secondary-nav .dropdown-menu li:nth-child(1) a,
+        .secondary-nav .dropdown-menu li:nth-child(2) a {
+            font-weight: 500;
+            color: var(--accent-blue);
+        }
+
+        .secondary-nav .dropdown-menu li:nth-child(1) a:hover,
+        .secondary-nav .dropdown-menu li:nth-child(2) a:hover {
+            color: var(--accent-hover-blue);
+        }
+
+        .send-in-button {
+            color: var(--accent-blue) !important;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .send-in-button:hover {
+            background: transparent !important;
+        }
+
+        .send-in-repair {
+            background-color: #2563eb; /* Primary blue */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: inherit;
+            transition: background-color 0.2s;
+        }
+
+        .send-in-repair:hover {
+            background-color: #1d4ed8; /* Darker blue on hover */
+        }
+
+        /* Help Desk Widget Styles */
+        .help-desk-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .help-desk-panel {
+            display: none;
+            background: var(--primary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            width: 320px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .help-desk-panel.active {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .help-desk-panel h4 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .help-desk-toggle {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 169, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .help-desk-toggle i {
+            display: inline-block;
+        }
+
+        .help-desk-toggle:hover {
+            background: var(--accent-hover-blue);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 169, 255, 0.4);
+        }
+
+        .dark-select, .dark-textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 10px;
+            border-radius: 6px;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        .dark-select option {
+            background: var(--primary-dark);
+            color: var(--text-primary);
+        }
+
+        .dark-select:focus, .dark-textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 2px rgba(0, 169, 255, 0.1);
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+        }
+
+        .btn-outline-secondary {
+            background: transparent;
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 169, 255, 0.2);
+        }
+
+        .mb-3 {
+            margin-bottom: 1rem;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        /* SEND-IN REPAIR button specific styling */
+        .nav-links a[href*="appleseedrepair-mail-in"] {
+            background: none;
+        }
+
+        /* SEND-IN REPAIR button style */
+        .nav-links .send-in-repair {
+            background-color: rgba(0, 40, 80, 0.3); /* More transparent, darker blue */
+            color: var(--text-primary);
+            padding: 0.5rem 1rem; /* Match other nav items padding */
+            border-radius: 4px;
+            font-weight: 500; /* Match other nav items weight */
+            text-transform: none; /* Remove uppercase */
+            letter-spacing: normal; /* Remove extra letter spacing */
+            text-decoration: none;
+            font-size: inherit; /* Match parent font size */
+            box-shadow: 0 0 15px rgba(0, 40, 80, 0.2);
+        }
+
+        .nav-links .send-in-repair:hover {
+            background-color: rgba(0, 40, 80, 0.4);
+        }
+
+        /* Book Now Button */
+        .book-now {
+            background-color: #00a9ff; /* Bright blue */
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-now:hover {
+            background-color: #0088cc; /* Darker blue on hover */
+        }
+
+        /* Phone Number Button */
+        .phone-button {
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+            background: transparent;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .phone-button:hover {
+            background: rgba(0, 169, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .reviewer-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            margin: 10px;
+            flex: 0 1 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .review-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header class="nav-container">
+        <nav class="navbar">
+            <a href="/" class="logo">
+                <span class="orange">Apple</span><span class="green">Seed</span> <span class="blue">Repairs</span>
+            </a>
+            <div class="nav-links">
+                <a href="https://sites.google.com/view/appleseed-repairs-services/" class="nav-item">
+                    <i class="fas fa-tools"></i> Services
+                </a>
+                <a href="https://sites.google.com/view/appleseed-repairs-about/home" class="nav-item">
+                    <i class="fas fa-info-circle"></i> About
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepairs-contact/home" class="nav-item">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+                <a href="https://blog.fixmyapple.org/" class="nav-item" target="_blank">
+                    <i class="fas fa-blog"></i> Blog
+                </a>
+                <a href="https://sites.google.com/view/appleseedrepair-mail-in/home" class="nav-item send-in-repair">
+                    <i class="fas fa-shipping-fast"></i> Send-in Repair
+                </a>
+            </div>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="secondary-nav">
+        <div class="container">
+            <ul class="secondary-nav-links">
+                <li class="dropdown">
+                    <a href="/support" class="dropdown-toggle" target="_self">Support</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://terms.fixmyapple.org" target="_blank">Terms & Conditions</a></li>
+                        <li><a href="https://warranty.fixmyapple.org" target="_blank">Warranty Information</a></li>
+                        <li><a href="https://faq.fixmyapple.org/" target="_blank">FAQ</a></li>
+                        <li><a href="https://sites.google.com/view/appleseedrepairs-contact/home" target="_blank">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li class="nav-separator">|</li>
+                <li class="dropdown">
+                    <a href="/other-services" class="dropdown-toggle" target="_self">Other Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/trade-in" target="_self">Trade-In Program</a></li>
+                        <li><a href="/used-devices" target="_self">Buy Used Devices</a></li>
+                        <li><a href="/sell" target="_self">Sell Your Device</a></li>
+                    </ul>
+                </li>
+                <li class="nav-separator">|</li>
+                <li class="dropdown">
+                    <a href="https://sites.google.com/view/appleseedrepair-mail-in" class="dropdown-toggle" target="_self">Send-In Repair</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/repair-quote" target="_self">Request a Repair Quote</a></li>
+                        <li><a href="/schedule-repair" target="_self">Schedule a Repair</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="/services/logic-board" target="_self">MacBook Logic Board Repair</a></li>
+                        <li><a href="/services/data-recovery" target="_self">MacBook Data Recovery</a></li>
+                        <li><a href="/services/liquid-damage" target="_self">Liquid Damage Repair</a></li>
+                        <li><a href="/services/screen-repair" target="_self">Screen Replacement</a></li>
+                        <li><a href="/services/battery-replacement" target="_self">Battery Replacement</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="/shipping-instructions" target="_self">Shipping Instructions</a></li>
+                        <li><a href="/repair-status" target="_self">Track Repair Status</a></li>
+                    </ul>
+                </li>
+                <li class="nav-separator">|</li>
+                <li><a href="https://sites.google.com/view/appleseed-repair-ip15-pro-max" target="_blank" rel="noopener">Repair Guides</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Professional Device Repair Services</h1>
+            <p>Expert repairs for your smartphones, tablets, and laptops</p>
+            <div class="hero-buttons">
+                <a href="https://booking.appointy.com/en-US/ubif/bookings/no-availability?st=668774" target="_self" class="cta-button">BOOK REPAIR</a>
+                <a href="https://sites.google.com/view/appleseed-repairs-services/home" target="_blank" class="secondary-button">VIEW SERVICES</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Phone Repair</h3>
+                <p>Screen replacement, battery service, and more for all major brands</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-tablet-alt"></i>
+                <h3>Tablet Repair</h3>
+                <p>Professional iPad and tablet repairs with quality parts</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-laptop"></i>
+                <h3>Laptop Repair</h3>
+                <p>Hardware fixes and upgrades for all laptop models</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2>Why Choose AppleSeed Repairs?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Quick Turnaround</h3>
+                    <p>Most repairs completed within 24 hours</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Warranty Guaranteed</h3>
+                    <p>90-day warranty on all repairs and parts</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Competitive Pricing</h3>
+                    <p>Best price guarantee on all our services</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Expert Technicians</h3>
+                    <p>Certified professionals with years of experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonials-filter">
+                <button class="filter-button active" data-filter="all">All Reviews</button>
+                <button class="filter-button" data-filter="phone">Phone</button>
+                <button class="filter-button" data-filter="laptop">Laptop</button>
+                <button class="filter-button" data-filter="tablet">Tablet</button>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card" data-service="phone">
+                    <div class="rating">★★★★★</div>
+                    <p>"Fixed my iPhone screen in under an hour. Great service and very professional!"</p>
+                    <div class="customer-info">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FCustomer%20Reviews%2FSarah%20M..jpeg?alt=media&token=eed55475-cdd4-46a8-be1a-86ee6cc35091" 
+                             alt="Customer Photo" 
+                             class="reviewer-photo"
+                             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23808080\'%3E%3Cpath d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z\'/%3E%3C/svg%3E';">
+                        <div>
+                            <h4>Sarah M.</h4>
+                            <span>iPhone Repair</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-service="laptop">
+                    <div class="rating">★★★★★</div>
+                    <p>"They replaced my laptop's battery and it's working like new. Excellent service!"</p>
+                    <div class="customer-info">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FCustomer%20Reviews%2FJohn%20D..jpeg?alt=media&token=f5e8eba4-66eb-41b7-a617-af8542adef3e" 
+                             alt="Customer Photo" 
+                             class="reviewer-photo"
+                             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23808080\'%3E%3Cpath d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z\'/%3E%3C/svg%3E';">
+                        <div>
+                            <h4>John D.</h4>
+                            <span>Laptop Repair</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-service="tablet">
+                    <div class="rating">★★★★★</div>
+                    <p>"Quick iPad screen replacement at a reasonable price. Highly recommend!"</p>
+                    <div class="customer-info">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FCustomer%20Reviews%2FMike%20R..jpeg?alt=media&token=95c79a80-cc7d-4551-926e-a2c23fcf13e1" 
+                             alt="Customer Photo" 
+                             class="reviewer-photo"
+                             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23808080\'%3E%3Cpath d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z\'/%3E%3C/svg%3E';">
+                        <div>
+                            <h4>Mike R.</h4>
+                            <span>Tablet Repair</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-service="phone">
+                    <div class="rating">���★★★★</div>
+                    <p>"Professional service and great communication throughout the repair process."</p>
+                    <div class="customer-info">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FCustomer%20Reviews%2FEmily%20W..jpeg?alt=media&token=0113a43e-8e63-468b-9cd2-a73cccf06269" 
+                             alt="Customer Photo" 
+                             class="reviewer-photo"
+                             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23808080\'%3E%3Cpath d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z\'/%3E%3C/svg%3E';">
+                        <div>
+                            <h4>Emily W.</h4>
+                            <span>Phone Repair</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-service="laptop">
+                    <div class="rating">★★★★★</div>
+                    <p>"Outstanding service! They fixed my MacBook's keyboard in just a few hours."</p>
+                    <div class="customer-info">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FCustomer%20Reviews%2FAlex%20K..jpeg?alt=media&token=ff379078-2a23-49de-a105-f38b8c9fd4e4" 
+                             alt="Customer Photo" 
+                             class="reviewer-photo"
+                             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23808080\'%3E%3Cpath d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z\'/%3E%3C/svg%3E';">
+                        <div>
+                            <h4>Alex K.</h4>
+                            <span>Laptop Repair</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-service="tablet">
+                    <div class="rating">★★★★★</div>
+                    <p>"Very knowledgeable staff and competitive pricing. My go-to repair shop!"</p>
+                    <div class="customer-info">
+                        <img src="https://firebasestorage.googleapis.com/v0/b/kaywat-b4236.firebasestorage.app/o/Appleseed%20Repairs%2FCustomer%20Reviews%2FLisa%20P..jpeg?alt=media&token=9ce828e5-1883-41e0-aa6e-af442c40c8b4" 
+                             alt="Customer Photo" 
+                             class="reviewer-photo"
+                             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23808080\'%3E%3Cpath d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z\'/%3E%3C/svg%3E';">
+                        <div>
+                            <h4>Lisa P.</h4>
+                            <span>Tablet Repair</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-navigation">
+                <button class="slider-arrow prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider-dots"></div>
+                <button class="slider-arrow next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Fix Your Device?</h2>
+            <p>Book an appointment now and get 10% off your first repair!</p>
+            <div class="cta-buttons">
+                <a href="https://booking.appointy.com/en-US/ubif/bookings/no-availability?st=668774" target="_self" class="book-now">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: info@fixmyapple.org</p>
+                <p>Phone: (470) 560-8107</p>
+                <p>Address: One Click Away From You</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="https://www.kaywat.me/" target="_blank">About Us</a>
+                <a href="https://sites.google.com/view/appleseedrepairs-contact/home" target="_blank">Contact</a>
+                <a href="/privacy" target="_self">Privacy Policy</a>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/AppleSeedRepairs/" target="_blank" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://x.com/FixMyApple_X" target="_blank" aria-label="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/FixMyApple_IG" target="_blank" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 1 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2014 AppleSeed Repairs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+
+    <!-- Add this script before the closing </body> tag -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.querySelector('.testimonials-slider');
+        const cards = document.querySelectorAll('.testimonial-card');
+        const dotsContainer = document.querySelector('.slider-dots');
+        const prevButton = document.querySelector('.slider-arrow.prev');
+        const nextButton = document.querySelector('.slider-arrow.next');
+        
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let currentIndex = 0;
+
+        // Create dots for pagination
+        cards.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => scrollToCard(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        // Navigation functions
+        function scrollToCard(index) {
+            const card = cards[index];
+            slider.scrollTo({
+                left: card.offsetLeft,
+                behavior: 'smooth'
+            });
+            currentIndex = index;
+            updateDots();
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // Arrow navigation
+        prevButton.addEventListener('click', () => {
+            currentIndex = Math.max(0, currentIndex - 1);
+            scrollToCard(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = Math.min(cards.length - 1, currentIndex + 1);
+            scrollToCard(currentIndex);
+        });
+
+        // Mouse drag functionality
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+            
+            // Snap to nearest card
+            const cardWidth = cards[0].offsetWidth;
+            const scrollPosition = slider.scrollLeft;
+            const newIndex = Math.round(scrollPosition / cardWidth);
+            scrollToCard(newIndex);
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Auto scroll with pause on hover
+        let autoScrollInterval;
+        
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                if (currentIndex >= cards.length - 1) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex++;
+                }
+                scrollToCard(currentIndex);
+            }, 5000);
+        }
+
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(autoScrollInterval);
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            startAutoScroll();
+        });
+
+        startAutoScroll();
+
+        // Touch Events for Mobile
+        slider.addEventListener('touchstart', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.touches[0].pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        }, { passive: true });
+
+        slider.addEventListener('touchend', () => {
+            isDown = false;
+            slider.classList.remove('active');
+            // Snap to nearest card
+            const cardWidth = cards[0].offsetWidth;
+            const scrollPosition = slider.scrollLeft;
+            const newIndex = Math.round(scrollPosition / cardWidth);
+            scrollToCard(newIndex);
+        });
+
+        slider.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            const x = e.touches[0].pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2;
+            slider.scrollLeft = scrollLeft - walk;
+        }, { passive: true });
+
+        // Service Filter Implementation
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+                
+                // Update active filter button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter testimonials
+                cards.forEach(card => {
+                    const service = card.dataset.service;
+                    if (filter === 'all' || service === filter) {
+                        card.style.display = '';
+                        card.style.opacity = '1';
+                    } else {
+                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                    }
+                });
+
+                // Reset slider position
+                scrollToCard(0);
+            });
+        });
+
+        const reviewerPhotos = document.querySelectorAll('.reviewer-photo');
+        
+        reviewerPhotos.forEach(img => {
+            img.addEventListener('error', function() {
+                console.error('Failed to load image:', img.src);
+                this.src = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23808080\'%3E%3Cpath d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z\'/%3E%3C/svg%3E';
+            });
+        });
+    });
+    </script>
+
+    <div class="help-desk-widget">
+        <div class="help-desk-panel" id="helpDeskPanel">
+            <h4><i class="fas fa-headset"></i> Customer Support</h4>
+            <div class="mb-3">
+                <select class="form-control dark-select" id="helpCategory">
+                    <option value="">Select Category</option>
+                    <option value="repair">Repair Status</option>
+                    <option value="technical">Technical Support</option>
+                    <option value="booking">Booking Help</option>
+                    <option value="other">Other Questions</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control dark-textarea" id="helpDescription" rows="3" placeholder="How can we help you today?"></textarea>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary btn-sm" onclick="submitHelpRequest()">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+                <button class="btn btn-outline-secondary btn-sm" onclick="showFAQ()">
+                    <i class="fas fa-question-circle"></i> FAQ
+                </button>
+            </div>
+        </div>
+        <button class="help-desk-toggle" onclick="toggleHelpDesk()" aria-label="Customer Support">
+            <i class="fas fa-headset"></i>
+        </button>
+    </div>
+
+    <script>
+        function toggleHelpDesk() {
+            const panel = document.getElementById('helpDeskPanel');
+            panel.classList.toggle('active');
+        }
+
+        function submitHelpRequest() {
+            const category = document.getElementById('helpCategory').value;
+            const description = document.getElementById('helpDescription').value;
+            
+            if (!category || !description) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Add your submission logic here
+            alert('Thank you for reaching out! We\'ll get back to you shortly.');
+            
+            // Reset form
+            document.getElementById('helpCategory').value = '';
+            document.getElementById('helpDescription').value = '';
+        }
+
+        function showFAQ() {
+            window.open('https://faq.fixmyapple.org/', '_blank');
+        }
+    </script>
+</body>
+</html>
