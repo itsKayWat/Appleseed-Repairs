@@ -122,8 +122,8 @@ This project is licensed under the terms of the license included in the reposito
 
 - Font Awesome for icons
 - Google Fonts for typography
-- Developed as a portfolio project by [Your Name]
+- Developed as a portfolio project by itsKayWat
 
 ## Contact
 
-For any questions or inquiries about this project, please contact [your contact information]. 
+For any questions or inquiries about this project, please contact gvtechhub@gmail.com. 
